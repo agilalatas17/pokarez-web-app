@@ -19,7 +19,7 @@
                             </p>
                         </header>
 
-                        <form method="post" action="{{ route('dashboard.blogs.update', ['blog' => $data->id]) }}"
+                        <form method="post" action="{{ route('admin.blogs.update', ['post' => $data->id]) }}"
                             class="mt-6 space-y-6" enctype="multipart/form-data">
                             @csrf
                             @method('put')
@@ -41,8 +41,8 @@
                             </div>
 
                             <div>
-                                <x-textarea-trix id="x" name="konten"
-                                    value="{!! old('konten', $data->konten) !!}"></x-textarea-trix>
+                                <x-textarea-summernote id="summernote" name="konten"
+                                    value="{!! old('konten', $data->konten) !!}"></x-textarea-summernote>
                             </div>
 
                             <div>

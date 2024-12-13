@@ -14,6 +14,13 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    {{-- Summernote Editor --}}
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
 </head>
 
 <body class="font-sans antialiased">
@@ -25,6 +32,16 @@
             <header class="bg-white shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
+
+                    @if ($errors->any())
+                        <div class="max-w-7xl mx-auto bg-red-400 p-3 mt-3 text-white rounded-md">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
             </header>
         @endif
@@ -34,6 +51,9 @@
             {{ $slot }}
         </main>
     </div>
+
+    {{-- Summernote Config --}}
+    <script src="{{ asset('assets/js/summernoteConfig.js') }}"></script>
 </body>
 
 </html>
