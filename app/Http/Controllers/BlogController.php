@@ -91,6 +91,7 @@ class BlogController extends Controller
 
          $dataUpdate = [
             'judul'=> $request->judul,
+            'slug'=> $this->generateSlug($request->judul, $post->id),
             'deskripsi'=> $request->deskripsi,
             'konten'=> $request->konten,
             'kategori'=> $request->kategori,
@@ -109,5 +110,22 @@ class BlogController extends Controller
     public function destroy(Post $post)
     {
         //
+    }
+
+    private function generateSlug($judul, $id) {
+        $slug = Str::slug($judul);
+
+        // mengecek tabel post,
+        // jika slug yang akan digenerate berasal dari id yang berbeda maka akan menambahkan count
+        // jika berada pada id yang sama maka tidak akan menambahkan count nya
+        $count = Post::where('slug', $slug)->when($id, function($query, $id){
+            return $query->where('id', '!=', $id);
+        })->count();
+
+        if($count > 0) {
+            $slug = $slug . "-" . ($count + 1);
+        }
+
+        return $slug;
     }
 }
