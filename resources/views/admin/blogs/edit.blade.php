@@ -41,8 +41,9 @@
                             </div>
 
                             <div>
-                                <x-textarea-summernote id="summernote" name="konten"
-                                    value="{!! old('konten', $data->konten) !!}"></x-textarea-summernote>
+                                <x-input-label for="tiny-editor" value="Konten" />
+                                <x-textarea-tinymce id="tiny-editor" name="konten"
+                                    value="{!! old('konten', $data->konten) !!}"></x-textarea-tinymce>
                             </div>
 
                             <div>
@@ -58,7 +59,7 @@
                                 </x-select>
                             </div>
 
-                            <a href="/blogs">
+                            <a href="/dashboard">
                                 <x-secondary-button>Kembali</x-secondary-button>
                             </a>
                             <x-primary-button>Simpan</x-primary-button>
