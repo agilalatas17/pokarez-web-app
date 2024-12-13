@@ -23,6 +23,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('dashboard', BlogController::class)
         ->names([
             'index' => 'admin.blogs.index',
+            'create' => 'admin.blogs.create',
+            'store' => 'admin.blogs.store',
             'edit' => 'admin.blogs.edit',
             'update' => 'admin.blogs.update',
         ])

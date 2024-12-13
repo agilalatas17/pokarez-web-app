@@ -9,6 +9,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow-sm sm:rounded-lg overflow-x-auto">
                 <div class="p-6 bg-white border-b border-gray-200">
+                    <div class="flex flex-row-reverse mb-6">
+                        <a href="{{ route('admin.blogs.create') }}"
+                            class='inline-block py-2 px-4 bg-sky-400 text-white rounded-md hover:bg-sky-400/85'>Tambah
+                            Blog</a>
+                    </div>
                     <table class="w-full whitespace-no-wrapw-full whitespace-no-wrap table-fixed">
                         <thead class="bg-slate-300">
                             <tr class="text-center font-bold">

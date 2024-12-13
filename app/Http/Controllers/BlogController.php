@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +27,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.blogs.create');
     }
 
     /**
@@ -34,7 +35,46 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'judul' => 'required',
+                'konten' => 'required',
+                'thumbnail' => 'image|mimes:jpeg,jpg,png,JPG,JPEG|max:10240',
+                'kategori' => 'required',
+
+            ],
+            [
+                'judul.required'=> 'Judul wajib diisi',
+                'konten.required'=> 'Konten wajib diisi',
+                'thumbnail.image'=> 'Hanya gambar yang diperbolehkan',
+                'thumbnail.mimes'=> 'Format gambar hanya JPEG, JPG dan PNG',
+                'thumbnail.max'=> 'Size maksimum 10MB',
+                'kategori.required'=> 'Wajib memilih kategori',
+            ]
+        );
+
+        // upload gambar
+        if($request->hasFile('thumbnail')){
+            $image = $request->file('thumbnail');
+            $image_name = time() . '_' . $image->getClientOriginalName();
+            $path_location = public_path(getenv('THUMBNAILS_LOCATION'));
+            $image->move($path_location, $image_name);
+        };
+
+        $dataStore = [
+            'judul'=> $request->judul,
+            'slug'=> $this->generateSlug($request->judul),
+            'deskripsi'=> $request->deskripsi,
+            'konten'=> $request->konten,
+            'kategori'=> $request->kategori,
+            'status'=> $request->status,
+            'thumbnail' => isset($image_name) ? $image_name : null,
+            'user_id' => Auth::user()->id
+        ];
+
+        Post::create($dataStore);
+        
+        return redirect()->route('admin.blogs.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -112,7 +152,7 @@ class BlogController extends Controller
         //
     }
 
-    private function generateSlug($judul, $id) {
+    private function generateSlug($judul, $id = null) {
         $slug = Str::slug($judul);
 
         // mengecek tabel post,
