@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -12,7 +13,12 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $data = Post::all();
+        $user = Auth::user();
+        $data = Post::where('user_id', $user->id)->orderBy('id', 'desc')->paginate(10);
+
+        
+        return view('admin.blogs.index', ['data' => $data]);
     }
 
     /**

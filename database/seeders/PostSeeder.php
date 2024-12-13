@@ -38,7 +38,8 @@ class PostSeeder extends Seeder
                 'deskripsi' => 'Deskripsi untuk judul ' . $j,
                 'konten' => 'Konten untuk ' . $j,
                 'tipe' => 'artikel',
-                'status' => 'publish'
+                'status' => 'publish',
+                'user_id' => '1',
             ]);
         }
     }
