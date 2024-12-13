@@ -32,7 +32,7 @@
                                         </div>
                                     </td>
                                     <td class="border px-6 py-4 text-center">
-                                        Artikel
+                                        {{ $value->kategori }}
                                     </td>
                                     <td class="border px-6 py-4 text-center text-gray-500 text-sm hidden lg:table-cell">
                                         {{ $value->created_at->isoFormat('dddd, DD MMMM Y') }}

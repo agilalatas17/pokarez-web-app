@@ -37,7 +37,7 @@ class PostSeeder extends Seeder
                 'slug' => $slug,
                 'deskripsi' => 'Deskripsi untuk judul ' . $j,
                 'konten' => 'Konten untuk ' . $j,
-                'tipe' => 'artikel',
+                'kategori' => 'artikel',
                 'status' => 'publish',
                 'user_id' => '1',
             ]);

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('thumbnail')->nullable();
             $table->text('konten');
             $table->text('deskripsi')->nullable();
-            $table->enum('tipe', ['artikel', 'video'])->default('artikel');
+            $table->enum('kategori', ['artikel', 'video'])->default('artikel');
             $table->enum('status', ['draft', 'publish'])->default('draft');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

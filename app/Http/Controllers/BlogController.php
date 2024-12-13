@@ -64,7 +64,7 @@ class BlogController extends Controller
                 'judul' => 'required',
                 'konten' => 'required',
                 'thumbnail' => 'image|mimes:jpeg,jpg,png,JPG,JPEG|max:10240',
-                'tipe' => 'required',
+                'kategori' => 'required',
 
             ],
             [
@@ -73,9 +73,21 @@ class BlogController extends Controller
                 'thumbnail.image'=> 'Hanya gambar yang diperbolehkan',
                 'thumbnail.mimes'=> 'Format gambar hanya JPEG, JPG dan PNG',
                 'thumbnail.max'=> 'Size maksimum 10MB',
-                'tipe.required'=> 'Wajib memilih kategori',
+                'kategori.required'=> 'Wajib memilih kategori',
             ]
         );
+
+         $dataUpdate = [
+            'judul'=> $request->judul,
+            'deskripsi'=> $request->deskripsi,
+            'konten'=> $request->konten,
+            'kategori'=> $request->kategori,
+            'status'=> $request->status,
+        ];
+
+        Post::where('id', $post->id)->update($dataUpdate);
+        
+        return redirect()->route('admin.blogs.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
