@@ -47,9 +47,16 @@
                                 </x-select>
                             </div>
                             <div>
-                                <x-input-label for="file_input" value="Thumbnail" name="thumbnail" />
-                                <input type="file" id="file_input"
-                                    class="mt-1 block w-full border border-gray-300 rounded-md" />
+                                <x-input-label for="file_input" value="Thumbnail" />
+                                @isset($data->thumbnail)
+                                    <img src="{{ asset(getenv('THUMBNAILS_LOCATION') . '/' . $data->thumbnail) }}"
+                                        class="rounded-md max-w-52 p-2">
+                                @endisset
+                                <div class="d-flex">
+                                    <input type="file" id="file_input" name="thumbnail"
+                                        class="mt-1 block w-full border border-gray-300 rounded-md" />
+
+                                </div>
                             </div>
 
                             <div>

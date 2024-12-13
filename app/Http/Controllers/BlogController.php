@@ -77,12 +77,25 @@ class BlogController extends Controller
             ]
         );
 
+        // upload gambar
+        if($request->hasFile('thumbnail')){
+            if(isset($post->thumbnail) && file_exists(public_path(getenv('THUMBNAILS_LOCATION')) . '/' . $post->thumbnail)) {
+                unlink(public_path(getenv('THUMBNAILS_LOCATION')) . '/' . $post->thumbnail);
+            }
+
+            $image = $request->file('thumbnail');
+            $image_name = time() . '_' . $image->getClientOriginalName();
+            $path_location = public_path(getenv('THUMBNAILS_LOCATION'));
+            $image->move($path_location, $image_name);
+        };
+
          $dataUpdate = [
             'judul'=> $request->judul,
             'deskripsi'=> $request->deskripsi,
             'konten'=> $request->konten,
             'kategori'=> $request->kategori,
             'status'=> $request->status,
+            'thumbnail' => isset($image_name) ? $image_name : $post->thumbnail
         ];
 
         Post::where('id', $post->id)->update($dataUpdate);
