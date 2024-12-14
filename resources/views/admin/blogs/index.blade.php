@@ -9,7 +9,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow-sm sm:rounded-lg overflow-x-auto">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="flex flex-row-reverse mb-6">
+                    <div class="flex justify-between mb-6">
+                        {{-- <div></div> --}}
+                        <form action="{{ route('admin.blogs.index') }}" method="get" class="m-auto">
+                            <x-text-input id="search" name="search" type="text" placeholder="Cari blog ..."
+                                class="!rounded-full" value="{{ request('search') }}"></x-text-input>
+                            <x-secondary-button type="submit" class="p-1 !rounded-full">Cari</x-secondary-button>
+                        </form>
                         <a href="{{ route('admin.blogs.create') }}"
                             class='inline-block py-2 px-4 bg-sky-400 text-white rounded-md hover:bg-sky-400/85'>Tambah
                             Blog</a>
@@ -19,7 +25,7 @@
                             <tr class="text-center font-bold">
                                 <td class="border px-6 py-4 w-[80px]">No</td>
                                 <td class="border px-6 py-4">Judul</td>
-                                <td class="border px-6 py-4">Kategori</td>
+                                <td class="border px-6 py-4 lg:w-[100px]">Kategori</td>
                                 <td class="border px-6 py-4 lg:w-[250px] hidden lg:table-cell">Tanggal</td>
                                 <td class="border px-6 py-4 lg:w-[100px] hidden lg:table-cell">Status</td>
                                 <td class="border px-6 py-4 lg:w-[250px] w-[100px]">Aksi</td>

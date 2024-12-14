@@ -12,11 +12,15 @@ class BlogController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Post::all();
         $user = Auth::user();
-        $data = Post::where('user_id', $user->id)->orderBy('id', 'desc')->paginate(10);
+        $search = $request->search;
+        $data = Post::where('user_id', $user->id)->where(function($query) use ($search) {
+            if($search) {
+                $query->where('judul', 'like', "%{$search}%")->orWhere('konten', 'like', "%{$search}%");
+            }
+        })->orderBy('id', 'desc')->paginate(10)->withQueryString();
 
         
         return view('admin.blogs.index', ['data' => $data]);
