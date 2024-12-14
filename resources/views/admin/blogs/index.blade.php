@@ -49,9 +49,15 @@
                                         <a href="{{ route('admin.blogs.edit', ['post' => $value->id]) }}"
                                             class="text-blue-600 hover:text-blue-400 px-2">edit</a>
                                         <a href='' class="text-blue-600 hover:text-blue-400 px-2">lihat</a>
-                                        <button type=' submit' class='text-red-600 hover:text-red-400 px-2'>
-                                            hapus
-                                        </button>
+                                        <form class="inline" method="post"
+                                            onsubmit="return confirm('Yakin ingin menghapus blog ini?')"
+                                            action="{{ route('admin.blogs.destroy', ['post' => $value->id]) }}">
+                                            @csrf
+                                            @method('delete')
+                                            <button type=' submit' class='text-red-600 hover:text-red-400 px-2'>
+                                                hapus
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

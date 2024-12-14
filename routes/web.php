@@ -27,6 +27,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             'store' => 'admin.blogs.store',
             'edit' => 'admin.blogs.edit',
             'update' => 'admin.blogs.update',
+            'destroy' => 'admin.blogs.destroy',
         ])
         ->parameters(['dashboard' => 'post']);
 });
