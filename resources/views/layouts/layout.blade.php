@@ -10,7 +10,7 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=lobster:400|nunito-sans:400,500,600,700,800,900" rel="stylesheet" />
 
     <!-- Scripts -->
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
@@ -21,17 +21,16 @@
 <body class="font-sans antialiased">
     <div class="min-h-screen">
         @include('layouts.navbar')
-
         <!-- Page Heading -->
-        @if (isset($header))
+        {{-- @if (isset($header))
             <header class="bg-white shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
             </header>
-        @endif
+        @endif --}}
 
         <!-- Page Content -->
-        <main>
+        <main class="relative h-screen">
             {{ $slot }}
         </main>
     </div>
