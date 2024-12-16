@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomePageController::class, 'index']);
+Route::get('/', [HomePageController::class, 'index'])->name('/');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('dashboard', BlogController::class)
