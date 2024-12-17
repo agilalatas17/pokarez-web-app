@@ -5,23 +5,23 @@
 
             <!-- Logo -->
             <div class="shrink-0 flex items-center">
-                <a href="{{ route('/') }}">
+                <a href="{{ url('/') }}">
                     <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                 </a>
             </div>
 
             <!-- Navigation Links -->
             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                <x-nav-link :href="route('/')" :active="request()->routeIs('/')">
+                <x-nav-link :href="url('/')" :active="request()->routeIs('/')">
                     Beranda
                 </x-nav-link>
-                <x-nav-link :href="route('/')" :active="request()->routeIs('/')">
+                <x-nav-link :href="url('/tentang-pokarez')" :active="request()->routeIs('tentang-pokarez')">
                     Tentang kami
                 </x-nav-link>
-                <x-nav-link :href="route('/')" :active="request()->routeIs('/')">
+                <x-nav-link :href="url('/blogs')" :active="request()->routeIs('blogs')">
                     Blog
                 </x-nav-link>
-                <x-nav-link :href="route('/')" :active="request()->routeIs('/')">
+                <x-nav-link :href="url('/konsultasi')" :active="request()->routeIs('konsultasi')">
                     Konsultasi
                 </x-nav-link>
             </div>
@@ -45,16 +45,16 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('admin.blogs.index')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="url('/')" :active="request()->routeIs('/')">
                 Beranda
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.blogs.index')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="url('/tentang-pokarez')" :active="request()->routeIs('tentang-pokarez')">
                 Tentang kami
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.blogs.index')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="url('/blogs')" :active="request()->routeIs('blogs')">
                 Blog
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.blogs.index')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="url('/konsultasi')" :active="request()->routeIs('konsultasi')">
                 Konsultasi
             </x-responsive-nav-link>
         </div>
