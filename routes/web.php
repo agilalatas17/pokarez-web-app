@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProfileController;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomePageController::class, 'index'])->name('/');
+Route::get('/blogs', [ArticleController::class, 'index'])->name('blogs');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('dashboard', BlogController::class)
