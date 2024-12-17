@@ -21,9 +21,11 @@
         @include('layouts.navbar')
         <!-- Page Heading -->
         @if (isset($header))
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
+            <header class="bg-pink-50 shadow max-h-40 py-6 border-b border-violet-200 mb-6">
+                <div class="container px-8 mx-auto">
+                    <div class="my-6 text-center">
+                        {{ $header }}
+                    </div>
                 </div>
             </header>
         @endif
