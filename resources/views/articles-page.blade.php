@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot name="header">
-        <h2 class="font-bold text-3xl text-gray-800">
+        <h2 class="font-bold text-3xl text-gray-800 text-center">
             Blog
         </h2>
     </x-slot>
