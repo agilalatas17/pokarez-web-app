@@ -264,7 +264,12 @@
                         </div>
                     </div>
                 </div>
-
+            </div>
+            <div class="flex justify-end mt-8">
+                <a href='#'
+                    class="px-4 py-2 font-bold tracking-wide text-pink-600 capitalize transition-colors duration-300 transform  rounded-md hover:bg-pink-500 hover:text-white focus:outline-none focus:ring focus:ring-pink-400 focus:ring-opacity-80">
+                    Lihat semua
+                </a>
             </div>
         </div>
     </section>
