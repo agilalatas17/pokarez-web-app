@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BlogDetailController;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomePageController::class, 'index'])->name('/');
+Route::get('/blogs', [ArticleController::class, 'index'])->name('blogs');
+Route::get('/konsultasi', function(){
+    return view('konsultasi-page');
+})->name('konsultasi');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('dashboard', BlogController::class)
@@ -41,3 +46,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/detail-page', [BlogDetailController::class, 'detail'])->name('detail-page');
