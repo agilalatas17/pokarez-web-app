@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomePageController::class, 'index'])->name('/');
 Route::get('/blogs', [ArticleController::class, 'index'])->name('blogs');
+Route::get('/konsultasi', function(){
+    return view('konsultasi-page');
+})->name('konsultasi');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('dashboard', BlogController::class)
