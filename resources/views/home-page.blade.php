@@ -134,41 +134,10 @@
             <h1 class="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl">Blog Terbaru</h1>
             <div class="grid grid-cols-1 gap-6 mt-8 md:mt-10 md:grid-cols-2 xl:grid-cols-3">
                 @foreach ($data as $key => $value)
-                    <div class="overflow-hidden bg-white rounded-lg shadow-md">
-                        @if (isset($value->thumbnail))
-                            <img class="object-cover object-center w-full h-64 rounded-lg" src="{{ $value->thumbnail }}"
-                                alt="Artikel">
-                        @else
-                            <img class="object-cover object-center w-full h-64 rounded-lg"
-                                src="{{ asset('assets/images/general/default-image.jpg') }}">
-                        @endif
-
-                        <div class="px-6 pt-4 pb-6">
-                            <div>
-                                <div class="flex justify-between items-center">
-                                    <span
-                                        class="d-block text-xs font-medium bg-pink-500 px-2 py-1 rounded text-white uppercase">{{ $value->kategori }}</span><span
-                                        class="d-block text-sm font-medium text-pink-500">{{ $value->created_at->diffForHumans() }}</span>
-                                </div>
-                                <a href="{{ route('blog-detail', ['slug' => $value->slug]) }}"
-                                    class="block mt-4 text-xl font-semibold text-gray-800 transition-colors duration-300 transform hover:text-purple-500 hover:underline"
-                                    tabindex="0" role="link">{{ $value->judul }}</a>
-                                <p class="mt-2 text-base text-gray-600">
-                                    {!! $value->konten !!}
-                                </p>
-                            </div>
-                            <div class="mt-4">
-                                <div class="flex items-center">
-                                    <div class="flex items-center">
-                                        <a href="{{ route('blog-detail', ['slug' => $value->slug]) }}"
-                                            class="font-semibold transition-colors duration-300 transform text-gray-700 hover:text-purple-500 hover:underline"
-                                            tabindex="0" role="link">Baca
-                                            selengkapnya</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <x-card-blog title="{{ $value->judul }}" thumbnail="{{ $value->thumbnail }}"
+                        category="{{ $value->kategori }}" date="{{ $value->created_at->diffForHumans() }}"
+                        content="{{ strip_tags($value->konten) }}"
+                        link="{{ route('blog-detail', ['slug' => $value->slug]) }}" />
                 @endforeach
             </div>
             <div class="flex justify-end mt-8">
