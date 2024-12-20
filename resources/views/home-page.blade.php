@@ -3,7 +3,7 @@
         <div class="container px-6 py-16 mx-auto">
             <div class="items-center lg:flex">
                 <div class="w-full lg:w-1/2">
-                    <div class="lg:max-w-lg">
+                    <div class="lg:max-w-lg text-center md:text-left">
                         <h1 class="text-3xl font-semibold text-gray-800 lg:text-4xl">Selamat datang <br> di <span
                                 class="text-pink-500 font-lobster">Pokarez</span> Website</h1>
 
@@ -12,7 +12,7 @@
                             perspiciatis optio.</p>
 
                         <button
-                            class="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-pink-500 rounded-lg lg:w-auto hover:bg-pink-400 focus:outline-none focus:bg-pink-400">Gabung
+                            class="w-fit px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-pink-500 rounded-lg lg:w-auto hover:bg-pink-400 focus:outline-none focus:bg-pink-400">Gabung
                             sekarang</button>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                     </svg>
                 </div>
 
-                <div class="flex items-center justify-center col-span-2 md:col-span-3 lg:col-span-1">
+                <div class="flex items-center justify-center col-span-1 md:col-span-3 lg:col-span-1">
                     <svg class="h-8 text-gray-500 fill-current" viewBox="0 0 2270 546"
                         xmlns="http://www.w3.org/2000/svg">
                         <g fill-rule="evenodd">
@@ -109,168 +109,73 @@
         </div>
     </section>
 
-    <section id="about" class="mx-20">
-        <div class="container px-6 py-8 mx-auto">
+    <section id="about">
+        <div class="container px-4 md:px-6 md:py-8 mx-auto">
             <div class="w-fit">
                 <h1 class="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl">Sepintas tentang
                     kami
                 </h1>
                 <hr class="my-3 border-pink-200">
+                <p class="lg:w-2/4"> Pola Makan Sehat Remaja Putri - Pokarez, merupakan suatu bentuk kegiatan edukasi
+                    gizi
+                    dan kesehatan pada
+                    remaja putri sebagai upaya pencegahan anemia Pola makan kurang tepat pada remaja sebelum atau selama
+                    menstruasi yaitu dengan mengkonsumsi makanan yang tidak sehat Status gizi berkaitan dengan asupan
+                    zat
+                    gizi termasuk zat besi, status gizi sangatlah penting bagi remaja karena dapat mempengaruhi proses
+                    pertumbuhan dan zat besi berperan dalam pembentukan darah merah.</p>
             </div>
-            <p class="w-2/4"> Pola Makan Sehat Remaja Putri - Pokarez, merupakan suatu bentuk kegiatan edukasi gizi
-                dan kesehatan pada
-                remaja putri sebagai upaya pencegahan anemia Pola makan kurang tepat pada remaja sebelum atau selama
-                menstruasi yaitu dengan mengkonsumsi makanan yang tidak sehat Status gizi berkaitan dengan asupan zat
-                gizi termasuk zat besi, status gizi sangatlah penting bagi remaja karena dapat mempengaruhi proses
-                pertumbuhan dan zat besi berperan dalam pembentukan darah merah.</p>
+
         </div>
     </section>
 
-    <section id="latest-blogs" class="my-20">
-        <div class="container px-6 py-8 mx-auto">
+    <section id="latest-blogs" class="my-20 -mb-4 md:-mb-0">
+        <div class="container px-4 md:px-6 md:py-8 mx-auto">
             <h1 class="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl">Blog Terbaru</h1>
             <div class="grid grid-cols-1 gap-6 mt-8 md:mt-10 md:grid-cols-2 xl:grid-cols-3">
-                <div class="overflow-hidden bg-white rounded-lg shadow-md">
-                    @if (isset($thumbnail))
-                        <img class="object-cover object-center w-full h-64 rounded-lg" src="{{ $thumbnail }}"
-                            alt="Artikel">
-                    @else
-                        <img class="object-cover object-center w-full h-64 rounded-lg"
-                            src="https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg"
-                            alt="gambar artikel">
-                    @endif
+                @foreach ($data as $key => $value)
+                    <div class="overflow-hidden bg-white rounded-lg shadow-md">
+                        @if (isset($value->thumbnail))
+                            <img class="object-cover object-center w-full h-64 rounded-lg" src="{{ $value->thumbnail }}"
+                                alt="Artikel">
+                        @else
+                            <img class="object-cover object-center w-full h-64 rounded-lg"
+                                src="{{ asset('assets/images/general/default-image.jpg') }}">
+                        @endif
 
-                    <div class="px-6 pt-4 pb-6">
-                        <div>
-                            <div class="flex justify-between items-center">
-                                <span
-                                    class="d-block text-xs font-medium bg-pink-500 px-2 py-1 rounded text-white uppercase">Artikel</span><span
-                                    class="d-block text-sm font-medium text-pink-500">12 Hari yang lalu</span>
+                        <div class="px-6 pt-4 pb-6">
+                            <div>
+                                <div class="flex justify-between items-center">
+                                    <span
+                                        class="d-block text-xs font-medium bg-pink-500 px-2 py-1 rounded text-white uppercase">{{ $value->kategori }}</span><span
+                                        class="d-block text-sm font-medium text-pink-500">{{ $value->created_at->diffForHumans() }}</span>
+                                </div>
+                                <a href="{{ route('blog-detail', ['slug' => $value->slug]) }}"
+                                    class="block mt-4 text-xl font-semibold text-gray-800 transition-colors duration-300 transform hover:text-purple-500 hover:underline"
+                                    tabindex="0" role="link">{{ $value->judul }}</a>
+                                <p class="mt-2 text-base text-gray-600">
+                                    {!! $value->konten !!}
+                                </p>
                             </div>
-                            <a href="#"
-                                class="block mt-4 text-xl font-semibold text-gray-800 transition-colors duration-300 transform hover:text-purple-500 hover:underline"
-                                tabindex="0"
-                                role="link">{{ Str::title('tips untuk makanan sehat dan bergizi') }}</a>
-                            <p class="mt-2 text-base text-gray-600">
-                                {!! Str::limit(
-                                    'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum, quod temporibus aperiam repellendus magni sed fugit quos tenetur et voluptatum a quas, asperiores alias laboriosam! Corrupti obcaecati excepturi qui ad ut repudiandae recusandae? At similique blanditiis cumque quos deleniti rerum perspiciatis eum tempore, quod architecto placeat unde alias ullam vel ut neque illum? Animi, accusamus voluptatum! Quam, voluptatem, dolores amet optio unde nesciunt reiciendis eligendi, ea mollitia repellendus fugit rem. Aliquam culpa quaerat dignissimos eaque obcaecati debitis maiores commodi tempora vel, blanditiis optio eveniet, dolore eum libero necessitatibus eos architecto perferendis similique natus iure atque. Provident, amet exercitationem laudantium eius quidem quisquam placeat reiciendis aspernatur reprehenderit soluta explicabo libero earum optio. Quam, nihil, sed accusantium in molestiae ea hic qui minima eum omnis modi voluptate ad iusto assumenda dignissimos? Numquam libero suscipit, nesciunt error, voluptas asperiores id quasi reprehenderit, quas excepturi cumque culpa atque quisquam. Consequuntur pariatur facere, corporis aspernatur reiciendis ipsam? Aliquam aliquid distinctio, facilis quibusdam omnis eos perspiciatis.',
-                                    100,
-                                    '...',
-                                ) !!}
-
-                            </p>
-                        </div>
-
-
-                        <div class="mt-4">
-                            <div class="flex items-center">
+                            <div class="mt-4">
                                 <div class="flex items-center">
-                                    <a href="#"
-                                        class="font-semibold transition-colors duration-300 transform text-gray-700 hover:text-purple-500 hover:underline"
-                                        tabindex="0" role="link">Baca
-                                        selengkapnya</a>
+                                    <div class="flex items-center">
+                                        <a href="{{ route('blog-detail', ['slug' => $value->slug]) }}"
+                                            class="font-semibold transition-colors duration-300 transform text-gray-700 hover:text-purple-500 hover:underline"
+                                            tabindex="0" role="link">Baca
+                                            selengkapnya</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="overflow-hidden bg-white rounded-lg shadow-md">
-                    @if (isset($thumbnail))
-                        <img class="object-cover object-center w-full h-64 rounded-lg" src="{{ $thumbnail }}"
-                            alt="Artikel">
-                    @else
-                        <img class="object-cover object-center w-full h-64 rounded-lg"
-                            src="https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg"
-                            alt="gambar artikel">
-                    @endif
-
-                    <div class="px-6 pt-4 pb-6">
-                        <div>
-                            <div class="flex justify-between items-center">
-                                <span
-                                    class="d-block text-xs font-medium bg-pink-500 px-2 py-1 rounded text-white uppercase">Artikel</span><span
-                                    class="d-block text-sm font-medium text-pink-500">12 Hari yang lalu</span>
-                            </div>
-                            <a href="#"
-                                class="block mt-4 text-xl font-semibold text-gray-800 transition-colors duration-300 transform hover:text-purple-500 hover:underline"
-                                tabindex="0"
-                                role="link">{{ Str::title('tips untuk makanan sehat dan bergizi') }}</a>
-                            <p class="mt-2 text-base text-gray-600">
-                                {!! Str::limit(
-                                    'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum, quod temporibus aperiam repellendus magni sed fugit quos tenetur et voluptatum a quas, asperiores alias laboriosam! Corrupti obcaecati excepturi qui ad ut repudiandae recusandae? At similique blanditiis cumque quos deleniti rerum perspiciatis eum tempore, quod architecto placeat unde alias ullam vel ut neque illum? Animi, accusamus voluptatum! Quam, voluptatem, dolores amet optio unde nesciunt reiciendis eligendi, ea mollitia repellendus fugit rem. Aliquam culpa quaerat dignissimos eaque obcaecati debitis maiores commodi tempora vel, blanditiis optio eveniet, dolore eum libero necessitatibus eos architecto perferendis similique natus iure atque. Provident, amet exercitationem laudantium eius quidem quisquam placeat reiciendis aspernatur reprehenderit soluta explicabo libero earum optio. Quam, nihil, sed accusantium in molestiae ea hic qui minima eum omnis modi voluptate ad iusto assumenda dignissimos? Numquam libero suscipit, nesciunt error, voluptas asperiores id quasi reprehenderit, quas excepturi cumque culpa atque quisquam. Consequuntur pariatur facere, corporis aspernatur reiciendis ipsam? Aliquam aliquid distinctio, facilis quibusdam omnis eos perspiciatis.',
-                                    100,
-                                    '...',
-                                ) !!}
-
-                            </p>
-                        </div>
-
-
-                        <div class="mt-4">
-                            <div class="flex items-center">
-                                <div class="flex items-center">
-                                    <a href="#"
-                                        class="font-semibold transition-colors duration-300 transform text-gray-700 hover:text-purple-500 hover:underline"
-                                        tabindex="0" role="link">Baca
-                                        selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="overflow-hidden bg-white rounded-lg shadow-md">
-                    @if (isset($thumbnail))
-                        <img class="object-cover object-center w-full h-64 rounded-lg" src="{{ $thumbnail }}"
-                            alt="Artikel">
-                    @else
-                        <img class="object-cover object-center w-full h-64 rounded-lg"
-                            src="https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg"
-                            alt="gambar artikel">
-                    @endif
-
-                    <div class="px-6 pt-4 pb-6">
-                        <div>
-                            <div class="flex justify-between items-center">
-                                <span
-                                    class="d-block text-xs font-medium bg-pink-500 px-2 py-1 rounded text-white uppercase">Artikel</span><span
-                                    class="d-block text-sm font-medium text-pink-500">12 Hari yang lalu</span>
-                            </div>
-                            <a href="#"
-                                class="block mt-4 text-xl font-semibold text-gray-800 transition-colors duration-300 transform hover:text-purple-500 hover:underline"
-                                tabindex="0"
-                                role="link">{{ Str::title('tips untuk makanan sehat dan bergizi') }}</a>
-                            <p class="mt-2 text-base text-gray-600">
-                                {!! Str::limit(
-                                    'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum, quod temporibus aperiam repellendus magni sed fugit quos tenetur et voluptatum a quas, asperiores alias laboriosam! Corrupti obcaecati excepturi qui ad ut repudiandae recusandae? At similique blanditiis cumque quos deleniti rerum perspiciatis eum tempore, quod architecto placeat unde alias ullam vel ut neque illum? Animi, accusamus voluptatum! Quam, voluptatem, dolores amet optio unde nesciunt reiciendis eligendi, ea mollitia repellendus fugit rem. Aliquam culpa quaerat dignissimos eaque obcaecati debitis maiores commodi tempora vel, blanditiis optio eveniet, dolore eum libero necessitatibus eos architecto perferendis similique natus iure atque. Provident, amet exercitationem laudantium eius quidem quisquam placeat reiciendis aspernatur reprehenderit soluta explicabo libero earum optio. Quam, nihil, sed accusantium in molestiae ea hic qui minima eum omnis modi voluptate ad iusto assumenda dignissimos? Numquam libero suscipit, nesciunt error, voluptas asperiores id quasi reprehenderit, quas excepturi cumque culpa atque quisquam. Consequuntur pariatur facere, corporis aspernatur reiciendis ipsam? Aliquam aliquid distinctio, facilis quibusdam omnis eos perspiciatis.',
-                                    100,
-                                    '...',
-                                ) !!}
-
-                            </p>
-                        </div>
-
-
-                        <div class="mt-4">
-                            <div class="flex items-center">
-                                <div class="flex items-center">
-                                    <a href="#"
-                                        class="font-semibold transition-colors duration-300 transform text-gray-700 hover:text-purple-500 hover:underline"
-                                        tabindex="0" role="link">Baca
-                                        selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="flex justify-end mt-8">
-                <a href='#'
+                <a href='/blogs'
                     class="px-4 py-2 font-bold tracking-wide text-pink-600 capitalize transition-colors duration-300 transform  rounded-md hover:bg-pink-500 hover:text-white focus:outline-none focus:ring focus:ring-pink-400 focus:ring-opacity-80">
                     Lihat semua
                 </a>
             </div>
-        </div>
     </section>
 </x-layout>
