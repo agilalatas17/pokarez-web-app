@@ -20,9 +20,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomePageController::class, 'index'])->name('/');
 Route::get('/blogs', [ArticleController::class, 'index'])->name('blogs');
+
 Route::get('/konsultasi', function(){
     return view('konsultasi-page');
 })->name('konsultasi');
+
+Route::get('/tentang-pokarez', function(){
+    abort(404);
+})->name('tentang-pokarez');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('dashboard', BlogController::class)
@@ -47,4 +52,4 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/detail-page', [BlogDetailController::class, 'detail'])->name('detail-page');
+Route::get('/{slug}', [BlogDetailController::class,'detail'])->name('blog-detail');
