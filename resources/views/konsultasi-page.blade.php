@@ -1,6 +1,6 @@
 <x-layout>
     <section class="min-h-screen bg-cover -mb-16"
-        style="background-image: url('https://github.com/agilalatas17/pokarez-web/blob/development/public/asset/images/general-user-img/nutrition_food_small.jpg?raw=true')">
+        style="background-image: url({{ asset('assets/images/general/konsultasi-background.jpg') }})">
         <div class="flex justify-center items-center min-h-screen backdrop-blur-md bg-black/65">
             <div class="container px-6 py-12 mx-auto">
                 <div class=" lg:flex lg:items-center lg:justify-center lg:-mx-6">

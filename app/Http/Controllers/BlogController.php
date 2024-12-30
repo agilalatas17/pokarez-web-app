@@ -62,6 +62,7 @@ class BlogController extends Controller
             $image = $request->file('thumbnail');
             $image_name = time() . '_' . $image->getClientOriginalName();
             $path_location = public_path(getenv('THUMBNAILS_LOCATION'));
+            // $path_location = base_path('../' . env('THUMBNAILS_LOCATION', 'upload/thumbnails')); // untuk host infinityfree
             $image->move($path_location, $image_name);
         };
 
@@ -121,15 +122,20 @@ class BlogController extends Controller
             ]
         );
 
-        // upload gambar
+        // update gambar
         if($request->hasFile('thumbnail')){
             if(isset($post->thumbnail) && file_exists(public_path(getenv('THUMBNAILS_LOCATION')) . '/' . $post->thumbnail)) {
                 unlink(public_path(getenv('THUMBNAILS_LOCATION')) . '/' . $post->thumbnail);
             }
 
+            // untuk host infinityfree
+            // if(isset($post->thumbnail) && file_exists(base_path('../' . env('THUMBNAILS_LOCATION', 'upload/thumbnails')) . '/' . $post->thumbnail)) {
+            //     unlink(base_path('../' . env('THUMBNAILS_LOCATION', 'upload/thumbnails')) . '/' . $post->thumbnail);
+            // }
+
             $image = $request->file('thumbnail');
             $image_name = time() . '_' . $image->getClientOriginalName();
-            $path_location = public_path(getenv('THUMBNAILS_LOCATION'));
+            $path_location = base_path('../' . getenv('THUMBNAILS_LOCATION'));
             $image->move($path_location, $image_name);
         };
 
@@ -156,6 +162,12 @@ class BlogController extends Controller
         if(isset($post->thumbnail) && file_exists(public_path(getenv('THUMBNAILS_LOCATION')) . '/' . $post->thumbnail)) {
             unlink(public_path(getenv('THUMBNAILS_LOCATION')) . '/' . $post->thumbnail);
         }
+
+        // untuk host infinityfree
+        // if(isset($post->thumbnail) && file_exists(base_path('../' . env('THUMBNAILS_LOCATION', 'upload/thumbnails')) . '/' . $post->thumbnail)) {
+        //     unlink(base_path('../' . env('THUMBNAILS_LOCATION', 'upload/thumbnails')) . '/' . $post->thumbnail);
+        // }
+
         Post::where('id', $post->id)->delete();
 
         return redirect()->route('admin.blogs.index')->with('success', 'Data berhasil dihapus!');

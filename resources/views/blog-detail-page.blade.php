@@ -13,7 +13,7 @@
         <article>
             <div class="px-2 mb-20">
                 @if ($data->thumbnail)
-                    <img src="{{ asset(getenv('THUMBNAILS_LOCATION') . '/' . $data->thumbnail) }}"
+                    <img src="{{ asset(env('THUMBNAILS_LOCATION') . '/' . $data->thumbnail) }}"
                         class="object-cover object-center max-w-[5xl] max-h-[512px] mx-auto">
                 @else
                     <img src="{{ asset('assets/images/general/default-image.jpg') }}"

@@ -4,7 +4,7 @@
     <a href="{{ $link }}">
         @if ($thumbnail)
             <img class="object-contain object-center w-full h-60 rounded-lg lg:h-64"
-                src="{{ asset(getenv('THUMBNAILS_LOCATION') . '/' . $thumbnail) }}" alt="Artikel image">
+                src="{{ asset(env('THUMBNAILS_LOCATION') . '/' . $thumbnail) }}" alt="Artikel image">
         @else
             <img class="object-cover object-center w-full h-60 rounded-lg lg:h-64"
                 src="{{ asset('assets/images/general/default-image.jpg') }}">

@@ -49,7 +49,7 @@
                             <div>
                                 <x-input-label for="file_input" value="Thumbnail" />
                                 @isset($data->thumbnail)
-                                    <img src="{{ asset(getenv('THUMBNAILS_LOCATION') . '/' . $data->thumbnail) }}"
+                                    <img src="{{ asset(env('THUMBNAILS_LOCATION', 'upload/thumbnails') . '/' . $data->thumbnail) }}"
                                         class="rounded-md max-w-52 p-2">
                                 @endisset
                                 <div class="d-flex">

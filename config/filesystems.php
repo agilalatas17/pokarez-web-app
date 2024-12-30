@@ -32,13 +32,15 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => public_path('upload'),
+            // 'root' => base_path('../upload'), // host infinityfree
+            'root' => public_path('../upload'), 
             'throw' => false,
         ],
 
         'public' => [
             'driver' => 'local',
-            'root' => public_path('upload'),
+            // 'root' => base_path('../upload'),// host infinityfree
+            'root' => public_path('../upload'),
             'url' => env('APP_URL').'/upload',
             'visibility' => 'public',
             'throw' => false,
