@@ -15,6 +15,15 @@ export default {
                 sans: ["Nunito Sans", ...defaultTheme.fontFamily.sans],
                 lobster: ["lobster"],
             },
+            animation: {
+                "running-image": "running-image 30s linear infinite",
+            },
+            keyframes: {
+                "running-image": {
+                    "0%": { transform: "translateX(0)" },
+                    "100%": { transform: "translateX(-100%)" },
+                },
+            },
         },
     },
 
