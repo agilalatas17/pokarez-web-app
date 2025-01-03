@@ -6,7 +6,7 @@
     </x-slot>
 
     <section id="blogs">
-        <div class="container px-4 md:p-0 mx-auto">
+        <div class="container px-4 my-16 md:p-0 mx-auto">
             <div class="grid grid-cols-1 gap-6 md:mt-10 md:grid-cols-2 xl:grid-cols-3">
                 @foreach ($data as $key => $value)
                     <x-card-blog title="{{ $value->judul }}" thumbnail="{{ $value->thumbnail }}"

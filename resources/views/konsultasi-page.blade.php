@@ -1,5 +1,5 @@
 <x-layout>
-    <section class="min-h-screen bg-cover -mb-16"
+    <section class="min-h-screen bg-cover"
         style="background-image: url({{ asset('assets/images/general/konsultasi-background.jpg') }})">
         <div class="flex justify-center items-center min-h-screen backdrop-blur-md bg-black/65">
             <div class="container px-6 py-12 mx-auto">
