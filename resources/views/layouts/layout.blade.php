@@ -35,6 +35,17 @@
         </main>
         @include('layouts.footer')
     </div>
+
+    <script>
+        // Clone running image
+        let runningImg = document.querySelector('#running-img');
+        let runningImgWrapper = document.querySelector('#running-img-wrapper');
+
+        for (let i = 0; i <= 6; i++) {
+            let clonedImg = runningImg.cloneNode(true);
+            runningImgWrapper.appendChild(clonedImg);
+        }
+    </script>
 </body>
 
 </html>
