@@ -47,7 +47,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::resource('profile', [ProfileController::class])->names([
+    Route::resource('profile', ProfileController::class)->names([
         'edit' => 'admin.profile.edit',
         'update' => 'admin.profile.update',
         'destroy' => 'admin.profile.destroy',
