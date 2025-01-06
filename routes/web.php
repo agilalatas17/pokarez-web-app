@@ -47,11 +47,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::prefix('profile')->name('profile.')->group(function () {
-        Route::get('/', [ProfileController::class, 'edit'])->name('edit');
-        Route::patch('/', [ProfileController::class, 'update'])->name('update');
-        Route::delete('/', [ProfileController::class, 'destroy'])->name('destroy');
-    });
+    Route::resource('profile', [ProfileController::class])->names([
+        'edit' => 'admin.profile.edit',
+        'update' => 'admin.profile.update',
+        'destroy' => 'admin.profile.destroy',
+    ]);
 });
 
 require __DIR__.'/auth.php';
