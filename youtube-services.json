@@ -1,0 +1,14 @@
+{
+    "web": {
+        "client_id": "40930891740-d5fkq8hhnm2ia2h83jdaoc574dcqct4b.apps.googleusercontent.com",
+        "project_id": "symbolic-datum-431119-u1",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret": "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",
+        "redirect_uris": [
+            "https://pokarez.com/dashboard/youtube/auth/google",
+            "http://localhost:8000/dashboard/youtube/callback"
+        ]
+    }
+}
