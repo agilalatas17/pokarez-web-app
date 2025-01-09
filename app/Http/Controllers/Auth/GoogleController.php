@@ -14,7 +14,9 @@ class GoogleController extends Controller {
     public function redirect() {
         return Socialite::driver('google')->scopes([
             'https://www.googleapis.com/auth/youtube.upload',
-            'https://www.googleapis.com/auth/youtube.readonly'
+            'https://www.googleapis.com/auth/youtube.readonly',
+            "https://www.googleapis.com/auth/youtube.force-ssl",
+            'https://www.googleapis.com/auth/youtube',
         ])->with(['access_type' => 'offline', 'prompt' => 'consent'])->redirect();
     }
 
