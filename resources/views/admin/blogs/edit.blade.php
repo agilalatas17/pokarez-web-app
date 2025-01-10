@@ -79,14 +79,14 @@
 
                             <div x-show="kategori === 'artikel'" x-cloak>
                                 <x-input-label for="tiny-editor" value="Konten artikel" />
-                                <x-textarea-tinymce id="tiny-editor" name="konten"
+                                <x-textarea-tinymce id="tiny-editor" id="content-article" name="konten"
                                     value="{!! old('konten', $data->konten) !!}"></x-textarea-tinymce>
                             </div>
 
                             <div x-show="kategori === 'video'" x-cloak>
                                 <x-input-label for="tiny-editor" value="Deskripsi video" />
-                                <x-textarea-tinymce id="tiny-editor" name="konten"
-                                    value="{!! old('konten', $data->konten) !!}"></x-textarea-tinymce>
+                                <x-textarea-tinymce id="tiny-editor" id="description-video" name="deskripsi"
+                                    value="{!! old('deskripsi', $data->deskripsi) !!}"></x-textarea-tinymce>
                             </div>
 
                             <div>

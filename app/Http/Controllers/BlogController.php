@@ -62,27 +62,42 @@ class BlogController extends Controller
             'access_token' => $googleToken,
             'expires_in' => 7200, // 2jam
         ]);
-
-        $request->validate(
-            [
-                'judul' => 'required',
-                'konten' => 'required',
-                'thumbnail' => 'image|mimes:jpeg,jpg,png,JPG,JPEG|max:10240',
-                'kategori' => 'required',
-                'video_url' => 'file|mimetypes:video/mp4,video/avi,video/mkv|max:51200', // Maks 50MB
-            ],
-            [
-                'judul.required'=> 'Judul wajib diisi',
-                'konten.required'=> 'Konten wajib diisi',
-                'thumbnail.image'=> 'Hanya gambar yang diperbolehkan',
-                'thumbnail.mimes'=> 'Format gambar hanya JPEG, JPG dan PNG',
-                'thumbnail.max'=> 'Size maksimum 10MB',
-                'kategori.required'=> 'Wajib memilih kategori',
-                'video_url.mimetypes' => 'Format video hanya MP4, AVI, atau MKV',
-                'video_url.max' => 'Ukuran maksimum video adalah 50MB',
-            ]
-        );
-
+        
+        if($request->kategori == 'artikel') {
+            $request->validate(
+                [
+                    'judul' => 'required',
+                    'konten' => 'required',
+                    'thumbnail' => 'image|mimes:jpeg,jpg,png,JPG,JPEG|max:10240',
+                    'kategori' => 'required',
+                ],
+                [
+                    'judul.required'=> 'Judul wajib diisi',
+                    'konten.required'=> 'Konten artikel wajib diisi',
+                    'thumbnail.image'=> 'Hanya gambar yang diperbolehkan',
+                    'thumbnail.mimes'=> 'Format gambar hanya JPEG, JPG dan PNG',
+                    'thumbnail.max'=> 'Size maksimum 10MB',
+                    'kategori.required'=> 'Wajib memilih kategori',
+                ]
+            );
+        } else {
+            $request->validate(
+                [
+                    'judul' => 'required',
+                    'deskripsi' => 'required',
+                    'kategori' => 'required',
+                    'video_url' => 'file|mimetypes:video/mp4,video/avi,video/mkv|max:51200', // Maks 50MB
+                ],
+                [
+                    'judul.required'=> 'Judul wajib diisi',
+                    'deskripsi.required'=> 'Deskripsi video wajib diisi',
+                    'kategori.required'=> 'Wajib memilih kategori',
+                    'video_url.mimetypes' => 'Format video hanya MP4, AVI, atau MKV',
+                    'video_url.max' => 'Ukuran maksimum video adalah 50MB',
+                ]
+            );
+        }
+        
         # upload gambar
         if($request->hasFile('thumbnail')){
             $image = $request->file('thumbnail');
@@ -108,7 +123,7 @@ class BlogController extends Controller
             $video_youtube = new Video();
 
             $snippet->setTitle($request->judul);
-            $snippet->setDescription(Str::of($request->konten)->stripTags());
+            $snippet->setDescription(Str::of($request->deskripsi)->stripTags());
             $status->setPrivacyStatus('unlisted');
             $video_youtube->setSnippet($snippet);
             $video_youtube->setStatus($status);
@@ -138,7 +153,7 @@ class BlogController extends Controller
             'thumbnail' => isset($image_name) ? $image_name : null,
             'video_url' => isset($video_name) ? $video_name : null,
             'user_id' => $user->id,
-            'youtube_video_id' => $response->getId()
+            'youtube_video_id' => isset($response->id) ? $response->getId() : null
         ];
 
         Post::create($dataStore);
@@ -188,23 +203,40 @@ class BlogController extends Controller
         $snippet = new VideoSnippet();
         $video_youtube_data = new Video();
         
-        $request->validate(
-            [
-                'judul' => 'required',
-                'konten' => 'required',
-                'thumbnail' => 'image|mimes:jpeg,jpg,png,JPG,JPEG|max:10240',
-                'video' => 'file|mimetypes:video/mp4,video/avi,video/mkv|max:51200'
-            ],
-            [
-                'judul.required'=> 'Judul wajib diisi',
-                'konten.required'=> 'Konten wajib diisi',
-                'thumbnail.image'=> 'Hanya gambar yang diperbolehkan',
-                'thumbnail.mimes'=> 'Format gambar hanya JPEG, JPG dan PNG',
-                'thumbnail.max'=> 'Size maksimum 10MB',
-                'video.mimetypes' => 'Format video hanya MP4, AVI, atau MKV',
-                'video.max' => 'Ukuran maksimum video adalah 50MB',
-            ]
-        );
+        if($request->kategori == 'artikel') {
+            $request->validate(
+                [
+                    'judul' => 'required',
+                    'konten' => 'required',
+                    'thumbnail' => 'image|mimes:jpeg,jpg,png,JPG,JPEG|max:10240',
+                    'kategori' => 'required',
+                ],
+                [
+                    'judul.required'=> 'Judul wajib diisi',
+                    'konten.required'=> 'Konten artikel wajib diisi',
+                    'thumbnail.image'=> 'Hanya gambar yang diperbolehkan',
+                    'thumbnail.mimes'=> 'Format gambar hanya JPEG, JPG dan PNG',
+                    'thumbnail.max'=> 'Size maksimum 10MB',
+                    'kategori.required'=> 'Wajib memilih kategori',
+                ]
+            );
+        } else {
+            $request->validate(
+                [
+                    'judul' => 'required',
+                    'deskripsi' => 'required',
+                    'kategori' => 'required',
+                    'video_url' => 'file|mimetypes:video/mp4,video/avi,video/mkv|max:51200', // Maks 50MB
+                ],
+                [
+                    'judul.required'=> 'Judul wajib diisi',
+                    'deskripsi.required'=> 'Deskripsi video wajib diisi',
+                    'kategori.required'=> 'Wajib memilih kategori',
+                    'video_url.mimetypes' => 'Format video hanya MP4, AVI, atau MKV',
+                    'video_url.max' => 'Ukuran maksimum video adalah 50MB',
+                ]
+            );
+        }
 
         // update gambar
         if($post->kategori == 'artikel' && $request->hasFile('thumbnail')){
@@ -237,7 +269,7 @@ class BlogController extends Controller
 
             $video_youtube_data->setId($youtubeId);
             $snippet->setTitle($request->judul);
-            $snippet->setDescription(Str::of($request->konten)->stripTags());
+            $snippet->setDescription(Str::of($request->deskripsi)->stripTags());
             $video_youtube_data->setSnippet($snippet);  
             
             $response = $service->videos->update('snippet', $video_youtube_data);
