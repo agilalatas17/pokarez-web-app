@@ -7,7 +7,7 @@
                         <x-application-logo />
                     </a>
 
-                    <p class="max-w-sm mt-2 text-gray-500 dark:text-gray-400">Jl. Tata Bumi No.3, Area Sawah, Banyuraden,
+                    <p class="max-w-sm mt-2 text-gray-500">Jl. Tata Bumi No.3, Area Sawah, Banyuraden,
                         Kec. Gamping, Kabupaten Sleman, D.I.Yogyakarta 55293</p>
 
                     {{-- <div class="flex mt-6 -mx-2">
@@ -54,8 +54,8 @@
                             Tautan Cepat
                         </h3>
                         <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Beranda</a>
-                        <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Tentang kami</a>
-                        <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Blog</a>
+                        <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Artikel</a>
+                        <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Video</a>
                         <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Konsultasi</a>
                     </div>
 
@@ -82,11 +82,10 @@
             </div>
         </div>
 
-        <hr class="h-px my-6 bg-gray-200 border-none dark:bg-gray-700">
+        <hr class="h-px my-6 bg-gray-200 border-none">
 
         <div>
-            <p class="text-center text-gray-500 dark:text-gray-400">©Copyright 2024 - Made with ❤️ - by <span
-                    class="text-pink-500">Pokarez Teams</span></p>
+            <p class="text-center text-gray-500">Made with ❤️ - by <span class="text-pink-500">Pokarez Teams</span></p>
         </div>
     </div>
 </footer>
