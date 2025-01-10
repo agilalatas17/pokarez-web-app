@@ -65,7 +65,6 @@
             "dont-discover": []
         },
         "google/apiclient-services": [
-            "Drive",
             "YouTube"
         ]
     },
