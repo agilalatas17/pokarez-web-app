@@ -20,15 +20,13 @@ use App\Http\Controllers\Auth\GoogleController;
 */
 
 Route::get('/', [HomePageController::class, 'index'])->name('/');
-Route::get('/blogs', [ArticleController::class, 'index'])->name('blogs');
 
 Route::get('/konsultasi', function(){
     return view('konsultasi-page');
 })->name('konsultasi');
 
-Route::get('/tentang-pokarez', function(){
-    abort(404);
-})->name('tentang-pokarez');
+Route::get('/blogs/artikel', [ArticleController::class, 'showArticles'])->name('blogs.articles-page');
+Route::get('/blogs/video', [ArticleController::class, 'showVideos'])->name('blogs.videos-page');
 
 Route::get('/login/google/redirect', [GoogleController::class, 'redirect']);
 Route::get('/login/google/callback', [GoogleController::class, 'callback']);
@@ -56,4 +54,4 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/{slug}', [BlogDetailController::class,'detail'])->name('blog-detail');
+Route::get('/{slug}', [BlogDetailController::class,'detail'])->name('blogs.detail.blog-detail');

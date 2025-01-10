@@ -69,18 +69,10 @@
                         <span class="inline-block w-1 h-1 bg-pink-500 rounded-full"></span>
                     </div>
 
-                    <p> Pola Makan Sehat Remaja Putri - Pokarez, merupakan suatu bentuk kegiatan
-                        edukasi
-                        gizi
-                        dan kesehatan pada
-                        remaja putri sebagai upaya pencegahan anemia Pola makan kurang tepat pada remaja sebelum atau
-                        selama
-                        menstruasi yaitu dengan mengkonsumsi makanan yang tidak sehat Status gizi berkaitan dengan
-                        asupan
-                        zat
-                        gizi termasuk zat besi, status gizi sangatlah penting bagi remaja karena dapat mempengaruhi
-                        proses
-                        pertumbuhan dan zat besi berperan dalam pembentukan darah merah.</p>
+                    <p>Pokarez (Pola Makan Sehat Remaja Putri) Merupakan sebuah layanan kesehatan yang didesain untuk
+                        membantu remaja dalam mendapatkan informasi yang relevan dan bermanfaat mengenai kesehatan,
+                        khususnya bagi remaja putri yang mengalami masa pertumbuhan dengan menjaga pola makan yang lebih
+                        sehat dengan melakukan Diet Gizi Seimbang</p>
                 </div>
             </div>
         </div>
@@ -91,10 +83,11 @@
             <h1 class="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl">Blog Terbaru</h1>
             <div class="grid grid-cols-1 gap-6 mt-8 md:mt-10 md:grid-cols-2 xl:grid-cols-3">
                 @foreach ($data as $key => $value)
-                    <x-card-blog title="{{ $value->judul }}" thumbnail="{{ $value->thumbnail }}"
+                    <x-card-blog title="{{ $value->judul }}"
+                        image="{{ $value->kategori == 'artikel' ? $value->thumbnail : $value->youtube_video_id }}"
                         category="{{ $value->kategori }}" date="{{ $value->created_at->diffForHumans() }}"
-                        content="{{ strip_tags($value->konten) }}"
-                        link="{{ route('blog-detail', ['slug' => $value->slug]) }}" />
+                        content="{{ $value->kategori == 'artikel' ? strip_tags($value->konten) : strip_tags($value->deskripsi) }}"
+                        link="{{ route('blogs.detail.blog-detail', ['slug' => $value->slug]) }}" />
                 @endforeach
             </div>
             <div class="flex justify-end mt-4 md:mt-8">
@@ -110,21 +103,21 @@
             activeSlide: 1,
             slides: [{
                     id: 1,
-                    name: 'Elon Musk',
-                    title: 'Direktur utama Tesla, inc.',
+                    name: 'Delia',
+                    title: '23 Tahun',
                     body: 'Edukasi diet gizi seimbang melalui website Pokarez menunjukkan dampak positif dalam meningkatkan pengetahuan dan perilaku makan sehat di berbagai kalangan, termasuk pada remaja putri.'
                 },
                 {
                     id: 2,
-                    name: 'Lisa Black Pink',
-                    title: 'Penyanyi',
-                    body: 'Edukasi diet gizi seimbang melalui website Pokarez menunjukkan dampak positif dalam meningkatkan pengetahuan dan perilaku makan sehat di berbagai kalangan, termasuk pada remaja putri. Edukasi diet gizi seimbang melalui website Pokarez menunjukkan dampak positif dalam meningkatkan pengetahuan dan perilaku makan sehat di berbagai kalangan, termasuk pada remaja putri'
+                    name: 'Enggar',
+                    title: '26 Tahun',
+                    body: 'POKAREZ sangat membantu saya yang masih awam dalam memahami kesehatan dan pola makan yang baik. Informasi yang disediakan sangat jelas, lengkap, dan mudah diakses, sehingga memudahkan saya untuk mencukupi kebutuhan gizi harian dengan tepat.'
                 },
                 {
                     id: 3,
-                    name: 'Fadel',
-                    title: 'Dancer',
-                    body: 'Edukasi diet gizi seimbang melalui website Pokarez menunjukkan dampak positif dalam meningkatkan pengetahuan dan perilaku makan sehat di berbagai kalangan, termasuk pada remaja putri.'
+                    name: 'Nada',
+                    title: '37 Tahun',
+                    body: 'Pokarez benar-benar mempermudah saya dalam memahami pola makan sehat untuk remaja. Situs ini sangat user-friendly dan informasi yang disajikan sangat bermanfaat. Fasilitas konsultasinya juga membuat saya lebih yakin dalam memilih makanan yang tepat. Pokarez kerenn!'
                 }
             ],
             loop() {
