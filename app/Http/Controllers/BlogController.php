@@ -7,11 +7,11 @@ use Google\Service\YouTube;
 use Google\Service\YouTube\VideoSnippet;
 use Google\Service\YouTube\VideoStatus;
 use App\Models\Post;
+use Google\Http\MediaFileUpload;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Google\Service\YouTube\Video;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Socialite\Facades\Socialite;
 
 class BlogController extends Controller
 {
@@ -86,14 +86,14 @@ class BlogController extends Controller
                     'judul' => 'required',
                     'deskripsi' => 'required',
                     'kategori' => 'required',
-                    'video_url' => 'file|mimetypes:video/mp4,video/avi,video/mkv|max:51200', // Maks 50MB
+                    'video_url' => 'file|mimetypes:video/mp4,video/avi,video/mkv|max:150000', // Maks 150MB
                 ],
                 [
                     'judul.required'=> 'Judul wajib diisi',
                     'deskripsi.required'=> 'Deskripsi video wajib diisi',
                     'kategori.required'=> 'Wajib memilih kategori',
                     'video_url.mimetypes' => 'Format video hanya MP4, AVI, atau MKV',
-                    'video_url.max' => 'Ukuran maksimum video adalah 50MB',
+                    'video_url.max' => 'Ukuran maksimum video adalah 150MB',
                 ]
             );
         }
@@ -110,13 +110,6 @@ class BlogController extends Controller
 
         # upload video
         if ($request->hasFile('video_url')) {
-            $video = $request->file('video_url');
-            $video_name = time() . '_' . $video->getClientOriginalName();
-            $video_path_location = public_path(getenv('VIDEOS_LOCATION'));
-            # untuk di infinityfree
-            // $video_path_location = base_path('../' . env('VIDEOS_LOCATION'));
-            $video->move($video_path_location, $video_name);
-
             $service = new Youtube($client);
             $snippet = new VideoSnippet();
             $status = new VideoStatus();
@@ -128,19 +121,27 @@ class BlogController extends Controller
             $video_youtube->setSnippet($snippet);
             $video_youtube->setStatus($status);
 
-            $videoFile = public_path('upload/videos' . '/' . $video_name);
-            # untuk di infinityfree
-            // $videoFile = base_path('../upload/videos' . '/' . $video_name);
+            $video_path = $request->file('video_url')->getRealPath();
 
-            $response = $service->videos->insert(
-                'snippet,status',
-                $video_youtube,
-                array(
-                    'data' => file_get_contents($videoFile),
-                    'mimeType' => 'application/octet-stream',
-                    'uploadType' => 'multipart'
-                )
-            );
+            # Upload video ke YouTube
+            $chunkSizeBytes = 1 * 1024 * 1024; // 1MB per chunk
+            $client->setDefer(true);
+
+            $insertRequest = $service->videos->insert('snippet,status', $video_youtube);
+
+            $media = new MediaFileUpload($client, $insertRequest, 'application/octet-stream', null, true, $chunkSizeBytes);
+            $media->setFileSize(filesize($video_path));
+
+            $status = false;
+            $handle = fopen($video_path, "rb");
+            
+            while (!$status && !feof($handle)) {
+                $chunk = fread($handle, $chunkSizeBytes);
+                $status = $media->nextChunk($chunk);
+            }
+            fclose($handle);
+
+            $client->setDefer(false);
         }
 
         $dataStore = [
@@ -153,7 +154,7 @@ class BlogController extends Controller
             'thumbnail' => isset($image_name) ? $image_name : null,
             'video_url' => isset($video_name) ? $video_name : null,
             'user_id' => $user->id,
-            'youtube_video_id' => isset($response->id) ? $response->getId() : null
+            'youtube_video_id' => isset($insertRequest->id) ? $insertRequest->getId() : null
         ];
 
         Post::create($dataStore);
@@ -226,14 +227,14 @@ class BlogController extends Controller
                     'judul' => 'required',
                     'deskripsi' => 'required',
                     'kategori' => 'required',
-                    'video_url' => 'file|mimetypes:video/mp4,video/avi,video/mkv|max:51200', // Maks 50MB
+                    'video_url' => 'file|mimetypes:video/mp4,video/avi,video/mkv|max:150000', // Maks 150MB
                 ],
                 [
                     'judul.required'=> 'Judul wajib diisi',
                     'deskripsi.required'=> 'Deskripsi video wajib diisi',
                     'kategori.required'=> 'Wajib memilih kategori',
                     'video_url.mimetypes' => 'Format video hanya MP4, AVI, atau MKV',
-                    'video_url.max' => 'Ukuran maksimum video adalah 50MB',
+                    'video_url.max' => 'Ukuran maksimum video adalah 150MB',
                 ]
             );
         }
