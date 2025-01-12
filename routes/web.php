@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\BlogDetailController;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\ConsultationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,8 @@ use App\Http\Controllers\Auth\GoogleController;
 
 Route::get('/', [HomePageController::class, 'index'])->name('/');
 
-Route::get('/konsultasi', function(){
-    return view('konsultasi-page');
-})->name('konsultasi');
+Route::get('/konsultasi', [ConsultationController::class, 'index'])->name('konsultasi');
+Route::post('/konsultasi', [ConsultationController::class, 'sendWhatsApp'])->name('send.whatsapp');
 
 Route::get('/blogs/artikel', [ArticleController::class, 'showArticles'])->name('blogs.articles-page');
 Route::get('/blogs/video', [ArticleController::class, 'showVideos'])->name('blogs.videos-page');
