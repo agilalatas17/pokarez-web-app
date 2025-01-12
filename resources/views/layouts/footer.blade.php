@@ -54,14 +54,14 @@
                             Tautan Cepat
                         </h3>
                         <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Beranda</a>
-                        <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Artikel</a>
+                        {{-- <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Artikel</a> --}}
                         <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Video</a>
                         <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Konsultasi</a>
                     </div>
 
                     <div>
                         <h3 class="text-sm font-semibold text-gray-700 uppercase">Blog</h3>
-                        <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Artikel</a>
+                        {{-- <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Artikel</a> --}}
                         <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Video</a>
                     </div>
 
@@ -76,7 +76,7 @@
                     <div>
                         <h3 class="text-sm font-semibold text-gray-700 uppercase">Kontak kami</h3>
                         <span class="block mt-2 text-sm text-gray-600 hover:underline">+62 823-1958-6539</span>
-                        <span class="block mt-2 text-sm text-gray-600 hover:underline">pokarez123@gmail.com</span>
+                        <span class="block mt-2 text-sm text-gray-600 hover:underline">pokarez.id@gmail.com</span>
                     </div>
                 </div>
             </div>

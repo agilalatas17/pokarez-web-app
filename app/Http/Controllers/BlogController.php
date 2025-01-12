@@ -7,6 +7,7 @@ use Google\Service\YouTube;
 use Google\Service\YouTube\VideoSnippet;
 use Google\Service\YouTube\VideoStatus;
 use App\Models\Post;
+use Exception;
 use Google\Http\MediaFileUpload;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -63,52 +64,53 @@ class BlogController extends Controller
             'expires_in' => 7200, // 2jam
         ]);
         
-        if($request->kategori == 'artikel') {
-            $request->validate(
-                [
-                    'judul' => 'required',
-                    'konten' => 'required',
-                    'thumbnail' => 'image|mimes:jpeg,jpg,png,JPG,JPEG|max:10240',
-                    'kategori' => 'required',
-                ],
-                [
-                    'judul.required'=> 'Judul wajib diisi',
-                    'konten.required'=> 'Konten artikel wajib diisi',
-                    'thumbnail.image'=> 'Hanya gambar yang diperbolehkan',
-                    'thumbnail.mimes'=> 'Format gambar hanya JPEG, JPG dan PNG',
-                    'thumbnail.max'=> 'Size maksimum 10MB',
-                    'kategori.required'=> 'Wajib memilih kategori',
-                ]
-            );
-        } else {
-            $request->validate(
-                [
-                    'judul' => 'required',
-                    'deskripsi' => 'required',
-                    'kategori' => 'required',
-                    'video_url' => 'file|mimetypes:video/mp4,video/avi,video/mkv|max:150000', // Maks 150MB
-                ],
-                [
-                    'judul.required'=> 'Judul wajib diisi',
-                    'deskripsi.required'=> 'Deskripsi video wajib diisi',
-                    'kategori.required'=> 'Wajib memilih kategori',
-                    'video_url.mimetypes' => 'Format video hanya MP4, AVI, atau MKV',
-                    'video_url.max' => 'Ukuran maksimum video adalah 150MB',
-                ]
-            );
-        }
-        
-        # upload gambar
-        if($request->hasFile('thumbnail')){
-            $image = $request->file('thumbnail');
-            $image_name = time() . '_' . $image->getClientOriginalName();
-            $path_location = public_path(getenv('THUMBNAILS_LOCATION'));
-            # untuk host infinityfree
-            // $path_location = base_path('../' . env('THUMBNAILS_LOCATION', 'upload/thumbnails'));
-            $image->move($path_location, $image_name);
-        };
+            if($request->kategori == 'artikel') {
+                $request->validate(
+                    [
+                        'judul' => 'required',
+                        'konten' => 'required',
+                        'thumbnail' => 'image|mimes:jpeg,jpg,png,JPG,JPEG|max:10240',
+                        'kategori' => 'required',
+                    ],
+                    [
+                        'judul.required'=> 'Judul wajib diisi',
+                        'konten.required'=> 'Konten artikel wajib diisi',
+                        'thumbnail.image'=> 'Hanya gambar yang diperbolehkan',
+                        'thumbnail.mimes'=> 'Format gambar hanya JPEG, JPG dan PNG',
+                        'thumbnail.max'=> 'Size maksimum 10MB',
+                        'kategori.required'=> 'Wajib memilih kategori',
+                    ]
+                );
+            } else {
+                $request->validate(
+                    [
+                        'judul' => 'required',
+                        'deskripsi' => 'required',
+                        'kategori' => 'required',
+                        'video_url' => 'file|mimetypes:video/mp4,video/avi,video/mkv|max:150000', // Maks 150MB
+                    ],
+                    [
+                        'judul.required'=> 'Judul wajib diisi',
+                        'deskripsi.required'=> 'Deskripsi video wajib diisi',
+                        'kategori.required'=> 'Wajib memilih kategori',
+                        'video_url.mimetypes' => 'Format video hanya MP4, AVI, atau MKV',
+                        'video_url.max' => 'Ukuran maksimum video adalah 150MB',
+                    ]
+                );
+            }
+ 
+            # upload gambar
+            if($request->hasFile('thumbnail')){
+                $image = $request->file('thumbnail');
+                $image_name = time() . '_' . $image->getClientOriginalName();
+                $path_location = public_path(getenv('THUMBNAILS_LOCATION'));
+                # untuk host infinityfree
+                // $path_location = base_path('../' . env('THUMBNAILS_LOCATION', 'upload/thumbnails'));
+                $image->move($path_location, $image_name);
+            };
 
-        # upload video
+        
+            # upload video
         if ($request->hasFile('video_url')) {
             $service = new Youtube($client);
             $snippet = new VideoSnippet();
@@ -122,22 +124,28 @@ class BlogController extends Controller
             $video_youtube->setStatus($status);
 
             $video_path = $request->file('video_url')->getRealPath();
+            // $video_file = $request->file('video_url');
+            // $video_path = file_get_contents($video_file->getPathname());
+            // $video_mime = $video_file->getMimeType();
 
             # Upload video ke YouTube
             $chunkSizeBytes = 1 * 1024 * 1024; // 1MB per chunk
             $client->setDefer(true);
 
             $insertRequest = $service->videos->insert('snippet,status', $video_youtube);
-
+            // $insertRequest = $service->videos->insert('snippet,status', $video_youtube, ['data' => $video_path, 'mimeType' => $video_mime]);
             $media = new MediaFileUpload($client, $insertRequest, 'application/octet-stream', null, true, $chunkSizeBytes);
             $media->setFileSize(filesize($video_path));
 
             $status = false;
             $handle = fopen($video_path, "rb");
-            
             while (!$status && !feof($handle)) {
                 $chunk = fread($handle, $chunkSizeBytes);
                 $status = $media->nextChunk($chunk);
+
+                if ($status && $status->getId()) {
+                    $uploadedVideoId = $status->getId();
+                }
             }
             fclose($handle);
 
@@ -152,9 +160,8 @@ class BlogController extends Controller
             'kategori'=> $request->kategori,
             'status'=> $request->status,
             'thumbnail' => isset($image_name) ? $image_name : null,
-            'video_url' => isset($video_name) ? $video_name : null,
             'user_id' => $user->id,
-            'youtube_video_id' => isset($insertRequest->id) ? $insertRequest->getId() : null
+            'youtube_video_id' => $uploadedVideoId
         ];
 
         Post::create($dataStore);

@@ -8,12 +8,12 @@
                         <h1 class="text-2xl font-semibold capitalize lg:text-3xl">Konsultasikan ke <span
                                 class="font-lobster">Pokarez</span></h1>
 
-                        <p class="max-w-xl mt-6">
+                        {{-- <p class="max-w-xl mt-6">
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem quo
                             aliquid molestiae hic incidunt beatae placeat accusantium! Alias ex quisquam ab tempora.
                             Ratione
                             autem doloremque ducimus numquam doloribus, error sed.
-                        </p>
+                        </p> --}}
 
                         {{-- <button
                             class="px-8 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50">

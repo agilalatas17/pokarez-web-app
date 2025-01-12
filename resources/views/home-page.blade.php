@@ -4,16 +4,12 @@
             <div class="items-center lg:flex">
                 <div class="w-full lg:w-1/2">
                     <div class="lg:max-w-lg text-center md:text-left">
-                        <h1 class="text-3xl font-semibold text-gray-800 lg:text-4xl">Selamat datang <br> di <span
-                                class="text-pink-500 font-lobster">Pokarez</span> Website</h1>
+                        <h1 class="text-3xl font-semibold text-gray-800 lg:text-4xl mb-6">Selamat datang di <span
+                                class="text-pink-500 font-lobster">Pokarez.</span></h1>
 
-                        <p class="mt-3 text-gray-600">Lorem ipsum dolor sit amet, consectetur
-                            adipisicing elit. Porro beatae error laborum ab amet sunt recusandae? Reiciendis natus
-                            perspiciatis optio.</p>
-
-                        <button
-                            class="w-fit px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-pink-500 rounded-lg lg:w-auto hover:bg-pink-400 focus:outline-none focus:bg-pink-400">Gabung
-                            sekarang</button>
+                        <a href="{{ route('blogs.videos-page') }}"
+                            class="w-fit px-5 py-2  text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-pink-500 rounded-lg lg:w-auto hover:bg-pink-400 focus:outline-none focus:bg-pink-400">Gabung
+                            sekarang</a>
                     </div>
                 </div>
 
