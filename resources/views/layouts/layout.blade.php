@@ -8,6 +8,11 @@
 
     <title>{{ config('app.name', 'POKAREZ WEB') }}</title>
 
+    <!-- Google Site Verification -->
+    @if (config('services.google_site_verification'))
+        <meta name="google-site-verification" content="{{ config('services.google_site_verification') }}" />
+    @endif
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=lobster:400|nunito-sans:400,500,600,700,800,900" rel="stylesheet" />
@@ -35,6 +40,17 @@
         </main>
         @include('layouts.footer')
     </div>
+
+    <script>
+        // Clone running image
+        let runningImg = document.querySelector('#running-img');
+        let runningImgWrapper = document.querySelector('#running-img-wrapper');
+
+        for (let i = 0; i <= 6; i++) {
+            let clonedImg = runningImg.cloneNode(true);
+            runningImgWrapper.appendChild(clonedImg);
+        }
+    </script>
 </body>
 
 </html>

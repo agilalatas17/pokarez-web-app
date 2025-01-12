@@ -20,8 +20,20 @@
                         </header>
 
                         <form method="post" action="{{ route('admin.blogs.store') }}" class="mt-6 space-y-6"
-                            enctype="multipart/form-data">
+                            enctype="multipart/form-data" x-data="{ kategori: '{{ old('kategori', 'artikel') }}' }">
                             @csrf
+
+                            <div>
+                                <x-input-label for="kategori" value="Kategori" />
+                                <select name="kategori" id="kategori" x-model="kategori"
+                                    class="mt-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                                    <option value="artikel" {{ old('kategori') === 'artikel' ? 'selected' : '' }}>
+                                        Artikel
+                                    </option>
+                                    <option value="video" {{ old('kategori') === 'video' ? 'selected' : '' }}>Video
+                                    </option>
+                                </select>
+                            </div>
 
                             <div>
                                 <x-input-label for="judul" value="Judul" />
@@ -29,27 +41,8 @@
                                     value="{{ old('judul') }}" />
                             </div>
 
-                            <div>
-                                <x-input-label for="deskripsi" value="Deskripsi" />
-                                <x-text-input id="deskripsi" name="deskripsi" type="text" class="mt-1 block w-full"
-                                    value="{{ old('deskripsi') }}" />
-                            </div>
-
-                            <div>
-                                <x-input-label for="kategori" value="Kategori" />
-                                <x-select name="kategori" id="kategori"
-                                    class="mt-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
-                                    <option value="artikel" {{ old('kategori') === 'artikel' ? 'selected' : '' }}>
-                                        Artikel
-                                    </option>
-                                    <option value="video" {{ old('kategori') === 'video' ? 'selected' : '' }}>Video
-                                    </option>
-                                </x-select>
-                            </div>
-
-
-                            <div>
-                                <x-input-label for="file_input" value="Thumbnail" />
+                            <div x-show="kategori === 'artikel'" x-cloak>
+                                <x-input-label for="file_input" value="Unggah Gambar" />
                                 <div class="d-flex">
                                     <input type="file" id="file_input" name="thumbnail"
                                         class="mt-1 block w-full border border-gray-300 rounded-md" />
@@ -57,10 +50,25 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <x-input-label for="tiny-editor" value="Konten" />
-                                <x-textarea-tinymce id="tiny-editor" name="konten"
+                            <div x-show="kategori === 'video'" x-cloak>
+                                <x-input-label for="file_input" value="Unggah video" />
+                                <div class="d-flex">
+                                    <input type="file" id="file_input" name="video_url"
+                                        class="mt-1 block w-full border border-gray-300 rounded-md" />
+
+                                </div>
+                            </div>
+
+                            <div x-show="kategori === 'artikel'" x-cloak>
+                                <x-input-label for="tiny-editor" value="Konten artikel" />
+                                <x-textarea-tinymce id="content-articles" name="konten"
                                     value="{!! old('konten') !!}"></x-textarea-tinymce>
+                            </div>
+
+                            <div x-show="kategori === 'video'" x-cloak>
+                                <x-input-label for="deskripsi" value="Deskripsi video" />
+                                <x-textarea-tinymce id="description-video" name="deskripsi"
+                                    value="{!! old('deskripsi') !!}"></x-textarea-tinymce>
                             </div>
 
                             <div>

@@ -9,7 +9,7 @@ class HomePageController extends Controller
 {
      public function index() {
         // mengambil postingan terbaru
-        $data = Post::where('status', 'publish')->orderBy('id', 'desc')->latest()->take(3)->get();
+        $data = Post::where('status', 'publish')->where('kategori', 'video')->orderBy('id', 'desc')->latest()->take(3)->get();
 
         return view('home-page', ['data' => $data]);
     }

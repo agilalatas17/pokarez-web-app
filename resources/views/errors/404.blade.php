@@ -27,7 +27,7 @@
                     <p class="mt-6 text-gray-700 text-lg md:text-2xl">Kami sedang mengerjakan halaman ini.</p>
 
                     <div class="flex items-center w-full mt-6 gap-x-3 shrink-0 sm:w-auto justify-center">
-                        <a href="../"
+                        <a href="{{ url()->previous() }}"
                             class="flex items-center justify-center w-1/2 px-5 py-2 text-base text-white transition-colors duration-200 bg-orange-400 border rounded-lg  gap-x-2 sm:w-auto hover:bg-orange-300">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:rotate-180">

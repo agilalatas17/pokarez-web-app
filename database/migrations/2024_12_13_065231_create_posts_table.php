@@ -12,9 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('posts', function (Blueprint $table) {
-             $table->id();
+            $table->id();
             $table->string('judul');
             $table->string('slug');
+            $table->string('youtube_video_id');
             $table->string('video_url')->nullable();
             $table->string('thumbnail')->nullable();
             $table->text('konten');

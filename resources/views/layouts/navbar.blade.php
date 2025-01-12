@@ -15,12 +15,45 @@
                 <x-nav-link :href="url('/')" :active="request()->routeIs('/')">
                     Beranda
                 </x-nav-link>
-                <x-nav-link :href="url('/tentang-pokarez')" :active="request()->routeIs('tentang-pokarez')">
-                    Tentang kami
+
+                <x-nav-link :href="url('/blogs/video')" :active="request()->routeIs('blogs.videos-page')">
+                    Video
                 </x-nav-link>
-                <x-nav-link :href="url('/blogs')" :active="request()->routeIs('blogs')">
-                    Blog
+
+                {{-- <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <x-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            <button
+                                class="inline-flex items-center border border-transparent text-base leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-pink-700 focus:outline-none transition ease-in-out duration-150">
+                                <div>Blog</div>
+
+                                <div class="ms-1">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </button>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            <x-dropdown-link :href="route('blogs.articles-page')">
+                                Artikel
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('blogs.videos-page')">
+                                Video
+                            </x-dropdown-link>
+                        </x-slot>
+                    </x-dropdown> 
+            </div> --}}
+                {{-- <x-nav-link :href="url('/blogs/artikel')" :active="request()->routeIs('blogs.articles-page')">
+                    Artikel
                 </x-nav-link>
+                <x-nav-link :href="url('/blogs/video')" :active="request()->routeIs('blogs.videos-page')">
+                    Video
+                </x-nav-link> --}}
                 <x-nav-link :href="url('/konsultasi')" :active="request()->routeIs('konsultasi')">
                     Konsultasi
                 </x-nav-link>
@@ -48,11 +81,11 @@
             <x-responsive-nav-link :href="url('/')" :active="request()->routeIs('/')">
                 Beranda
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="url('/tentang-pokarez')" :active="request()->routeIs('tentang-pokarez')">
+            {{-- <x-responsive-nav-link :href="url('/blogs/artikel')" :active="request()->routeIs('blogs.articles-page')">
                 Tentang kami
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="url('/blogs')" :active="request()->routeIs('blogs')">
-                Blog
+            </x-responsive-nav-link> --}}
+            <x-responsive-nav-link :href="url('/blogs/video')" :active="request()->routeIs('blogs.videos-page')">
+                Video
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="url('/konsultasi')" :active="request()->routeIs('konsultasi')">
                 Konsultasi

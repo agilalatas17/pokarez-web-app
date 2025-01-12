@@ -1,10 +1,15 @@
-@props(['title', 'content', 'category', 'date', 'thumbnail', 'link'])
+@props(['title', 'content', 'category', 'date', 'image', 'videoId', 'link'])
 
 <div class="overflow-hidden bg-white rounded-lg shadow-md">
     <a href="{{ $link }}">
-        @if ($thumbnail)
+        @if ($category === 'artikel')
             <img class="object-contain object-center w-full h-60 rounded-lg lg:h-64"
-                src="{{ asset(getenv('THUMBNAILS_LOCATION') . '/' . $thumbnail) }}" alt="Artikel image">
+                src="{{ asset(env('THUMBNAILS_LOCATION') . '/' . $image) }}" alt="Artikel image">
+        @elseif ($category === 'video')
+            <iframe class="w-[495px] h-[180px] md:w-full md:h-[270px]"
+                src="https://www.youtube-nocookie.com/embed/{{ $image }}" title="YouTube video player"
+                frameborder="0" referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
         @else
             <img class="object-cover object-center w-full h-60 rounded-lg lg:h-64"
                 src="{{ asset('assets/images/general/default-image.jpg') }}">
