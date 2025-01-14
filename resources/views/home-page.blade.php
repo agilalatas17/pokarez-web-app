@@ -4,18 +4,23 @@
             <div class="items-center lg:flex">
                 <div class="w-full lg:w-1/2">
                     <div class="lg:max-w-lg text-center md:text-left">
-                        <h1 class="text-3xl font-semibold text-gray-800 lg:text-4xl mb-6">Selamat datang di <span
-                                class="text-pink-500 font-lobster">Pokarez.</span></h1>
+                        <h1 class="text-3xl font-semibold text-gray-800 lg:text-4xl mb-2">Selamat datang di
+                            <span class="text-pink-500 font-lobster">Pokarez.</span>
+                        </h1>
 
-                        <a href="{{ route('blogs.videos-page') }}"
-                            class="w-fit px-5 py-2  text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-pink-500 rounded-lg lg:w-auto hover:bg-pink-400 focus:outline-none focus:bg-pink-400">Gabung
-                            sekarang</a>
+                        <p>Mengatur nutrisi mu diawal masa remaja melalui diet gizi seimbang. </p>
+
+                        <div class="mt-6">
+                            <a href="{{ route('blogs.videos-page') }}"
+                                class="w-fit px-5 py-2 text-sm tracking-wider  text-white uppercase transition-colors duration-300 transform bg-pink-500 rounded-lg lg:w-auto hover:bg-pink-400 focus:outline-none focus:bg-pink-400">Gabung
+                                sekarang</a>
+                        </div>
                     </div>
                 </div>
 
                 <div class="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
-                    <img class="w-full h-full lg:max-w-3xl" src="{{ asset('assets/images/general/hero_image.png') }}"
-                        alt="hero image">
+                    <img class="w-full h-full lg:max-w-3xl animate-bounce"
+                        src="{{ asset('assets/images/general/hero_image.png') }}" alt="hero image">
                 </div>
             </div>
         </div>

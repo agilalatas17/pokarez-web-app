@@ -17,11 +17,22 @@ export default {
             },
             animation: {
                 "running-image": "running-image 30s linear infinite",
+                bounce: "bounce 2s infinite",
             },
             keyframes: {
                 "running-image": {
                     "0%": { transform: "translateX(0)" },
                     "100%": { transform: "translateX(-100%)" },
+                },
+                bounce: {
+                    "0%, 100%": {
+                        transform: "translateY(0)",
+                        animationTimingFunction: "ease-in-out",
+                    },
+                    "50%": {
+                        transform: "translateY(20px)",
+                        animationTimingFunction: "ease-in-out",
+                    },
                 },
             },
         },
