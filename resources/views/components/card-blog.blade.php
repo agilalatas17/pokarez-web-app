@@ -20,8 +20,8 @@
         <div>
             <div class="flex justify-between items-center">
                 <span
-                    class="d-block text-xs font-medium bg-pink-500 px-2 py-1 rounded text-white uppercase">{{ Str::upper($category) }}</span><span
-                    class="d-block text-sm font-medium text-pink-500">{{ $date }}</span>
+                    class="d-block text-xs font-medium bg-teal-600 px-2 py-1 rounded text-white uppercase">{{ Str::upper($category) }}</span><span
+                    class="d-block text-sm font-medium text-teal-600">{{ $date }}</span>
             </div>
             <a href="{{ $link }}"
                 class="block mt-4 text-xl font-semibold text-gray-800 transition-colors duration-300 transform hover:text-purple-500 hover:underline"

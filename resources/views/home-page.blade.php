@@ -5,14 +5,14 @@
                 <div class="w-full lg:w-1/2">
                     <div class="lg:max-w-lg text-center md:text-left">
                         <h1 class="text-3xl font-semibold text-gray-800 lg:text-4xl mb-2">Selamat datang di
-                            <span class="text-pink-500 font-lobster">Pokarez.</span>
+                            <span class="text-teal-600 font-lobster">Pokarez.</span>
                         </h1>
 
                         <p>Mengatur nutrisi mu diawal masa remaja melalui diet gizi seimbang. </p>
 
                         <div class="mt-6">
                             <a href="{{ route('blogs.videos-page') }}"
-                                class="w-fit px-5 py-2 text-sm tracking-wider  text-white uppercase transition-colors duration-300 transform bg-pink-500 rounded-lg lg:w-auto hover:bg-pink-400 focus:outline-none focus:bg-pink-400">Gabung
+                                class="w-fit px-5 py-2 text-sm tracking-wider  text-white uppercase transition-colors duration-300 transform bg-teal-600 rounded-lg lg:w-auto hover:bg-teal-500 focus:outline-none focus:bg-teal-500">Gabung
                                 sekarang</a>
                         </div>
                     </div>
@@ -20,7 +20,7 @@
 
                 <div class="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
                     <img class="w-full h-full lg:max-w-3xl animate-bounce"
-                        src="{{ asset('assets/images/general/hero_image.png') }}" alt="hero image">
+                        src="{{ asset('assets/images/general/hero_image_teal_color.png') }}" alt="hero image">
                 </div>
             </div>
         </div>
@@ -59,15 +59,15 @@
         url('{{ asset('assets/images/general/poltekes kemenkes jogja.JPG') }}');">
         <div class="flex h-full items-center justify-center bg-black bg-opacity-65 text-white">
             <div class="container px-2 py-6 md:px-6 md:py-8 mx-auto">
-                <div class="w-fit text-center md:text-left">
+                <div class="w-fit text-center md:text-left" data-aos="zoom-in" data-aos-duration="500">
                     <h1 class="text-2xl font-semibold capitalize lg:text-3xl ">Sepintas tentang
                         kami
                     </h1>
 
                     <div class="flex mt-3 mb-6 mx-auto justify-center md:justify-normal md:mb-8 ">
-                        <span class="inline-block w-40 h-1 bg-pink-500 rounded-full"></span>
-                        <span class="inline-block w-3 h-1 mx-1 bg-pink-500 rounded-full"></span>
-                        <span class="inline-block w-1 h-1 bg-pink-500 rounded-full"></span>
+                        <span class="inline-block w-40 h-1 bg-teal-600 rounded-full"></span>
+                        <span class="inline-block w-3 h-1 mx-1 bg-teal-600 rounded-full"></span>
+                        <span class="inline-block w-1 h-1 bg-teal-600 rounded-full"></span>
                     </div>
 
                     <p>Pokarez (Pola Makan Sehat Remaja Putri) Merupakan sebuah layanan kesehatan yang didesain untuk
@@ -82,7 +82,8 @@
     <section id="latest-blogs" class="my-8">
         <div class="container px-4 md:px-6 md:py-8 mx-auto">
             <h1 class="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl">Blog Terbaru</h1>
-            <div class="grid grid-cols-1 gap-6 mt-8 md:mt-10 md:grid-cols-2 xl:grid-cols-3">
+            <div class="grid grid-cols-1 gap-6 mt-8 md:mt-10 md:grid-cols-2 xl:grid-cols-3" data-aos="fade-up"
+                data-aos-duration="500">
                 @foreach ($data as $key => $value)
                     <x-card-blog title="{{ $value->judul }}"
                         image="{{ $value->kategori == 'artikel' ? $value->thumbnail : $value->youtube_video_id }}"
@@ -93,7 +94,7 @@
             </div>
             <div class="flex justify-end mt-4 md:mt-8">
                 <a href='/blogs'
-                    class="px-4 py-2 font-bold tracking-wide text-pink-600 capitalize transition-colors duration-300 transform  rounded-md hover:bg-pink-500 hover:text-white focus:outline-none focus:ring focus:ring-pink-400 focus:ring-opacity-80">
+                    class="px-4 py-2 font-bold tracking-wide text-teal-600 capitalize transition-colors duration-300 transform  rounded-md hover:bg-teal-600 hover:text-white focus:outline-none focus:ring focus:ring-teal-400 focus:ring-opacity-80">
                     Lihat semua
                 </a>
             </div>
@@ -130,9 +131,9 @@
             </h1>
 
             <div class="flex justify-center mx-auto mt-6">
-                <span class="inline-block w-40 h-1 bg-pink-500 rounded-full"></span>
-                <span class="inline-block w-3 h-1 mx-1 bg-pink-500 rounded-full"></span>
-                <span class="inline-block w-1 h-1 bg-pink-500 rounded-full"></span>
+                <span class="inline-block w-40 h-1 bg-teal-600 rounded-full"></span>
+                <span class="inline-block w-3 h-1 mx-1 bg-teal-600 rounded-full"></span>
+                <span class="inline-block w-1 h-1 bg-teal-600 rounded-full"></span>
             </div>
 
             <div class="flex items-start max-w-6xl mx-auto mt-16">
@@ -181,7 +182,7 @@
                     <button
                         class=" w-6 h-2 mt-4 mx-2 mb-2 rounded-full overflow-hidden tansition-colors duration-200 ease-out hover:bg-slate-600 hover:shadow-lg"
                         :class="{
-                            'bg-pink-500': activeSlide === slide.id,
+                            'bg-teal-600': activeSlide === slide.id,
                             'bg-slate-200': activeSlide !== slide.id
                         }"
                         x-on:click="activeSlide = slide.id"></button>

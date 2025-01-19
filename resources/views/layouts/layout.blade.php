@@ -17,6 +17,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=lobster:400|nunito-sans:400,500,600,700,800,900" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -27,7 +28,7 @@
         @include('layouts.navbar')
         <!-- Page Heading -->
         @if (isset($header))
-            <header class="bg-pink-50 shadow md:max-h-40 py-3 md:py-6 border-b border-violet-200 mb-6">
+            <header class="bg-teal-50 shadow md:max-h-40 py-3 md:py-6 border-b border-violet-200 mb-6">
                 <div class="container px-4 md:px-8 mx-auto">
                     <div class="my-6">
                         {{ $header }}
@@ -51,6 +52,10 @@
             let clonedImg = runningImg.cloneNode(true);
             runningImgWrapper.appendChild(clonedImg);
         }
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
     </script>
 </body>
 

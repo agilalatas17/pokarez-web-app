@@ -5,27 +5,18 @@
             <div class="container flex flex-col flex-1 px-6 py-12 mx-auto">
                 <div class="flex-1 lg:flex lg:items-center lg:-mx-6">
                     <div class="text-white lg:w-1/2 lg:mx-6">
-                        <h1 class="text-2xl font-semibold capitalize lg:text-3xl">Konsultasikan ke <span
-                                class="font-lobster">Pokarez</span></h1>
-
-                        {{-- <p class="max-w-xl mt-6">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem quo
-                            aliquid molestiae hic incidunt beatae placeat accusantium! Alias ex quisquam ab tempora.
-                            Ratione
-                            autem doloremque ducimus numquam doloribus, error sed.
-                        </p> --}}
-
-                        {{-- <button
-                            class="px-8 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50">
-                            get in touch
-                        </button> --}}
+                        <h1 class="text-2xl font-semibold capitalize lg:text-3xl" data-aos="fade-down"
+                            data-aos-easing="easing" data-aos-duration="1300">Konsultasikan ke <span
+                                class="font-lobster text-teal-400">Pokarez</span></h1>
 
                         <div class="mt-6 md:mt-8">
                             <h3 class="text-gray-300 ">Ikuti kami</h3>
 
                             <div class="flex mt-4 -mx-1.5 ">
+                                {{-- Twitter --}}
                                 <a class="mx-1.5 text-white transition-colors duration-300 transform hover:text-blue-500"
-                                    href="#">
+                                    href="#" data-aos="fade-right" data-aos-easing="linear"
+                                    data-aos-duration="1300">
                                     <svg class="w-10 h-10 fill-current" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -33,8 +24,10 @@
                                     </svg>
                                 </a>
 
+                                {{-- Linkedin --}}
                                 <a class="mx-1.5 text-white transition-colors duration-300 transform hover:text-blue-500"
-                                    href="#">
+                                    href="#" data-aos="fade-right" data-aos-easing="linear"
+                                    data-aos-duration="1000">
                                     <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -47,18 +40,11 @@
                                     </svg>
                                 </a>
 
+                                {{-- instagram --}}
                                 <a class="mx-1.5 text-white transition-colors duration-300 transform hover:text-blue-500"
-                                    href="#">
-                                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M7 10.2222V13.7778H9.66667V20H13.2222V13.7778H15.8889L16.7778 10.2222H13.2222V8.44444C13.2222 8.2087 13.3159 7.9826 13.4826 7.81591C13.6493 7.64921 13.8754 7.55556 14.1111 7.55556H16.7778V4H14.1111C12.9324 4 11.8019 4.46825 10.9684 5.30175C10.1349 6.13524 9.66667 7.2657 9.66667 8.44444V10.2222H7Z"
-                                            fill="currentColor" />
-                                    </svg>
-                                </a>
-
-                                <a class="mx-1.5 text-white transition-colors duration-300 transform hover:text-blue-500"
-                                    href="#">
+                                    href="https://www.instagram.com/ndrybee?igsh=bTVvamRscTBvdTNj&utm_source=qr"
+                                    target="_blank" data-aos="fade-right" data-aos-easing="linear"
+                                    data-aos-duration="700">
                                     <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -70,7 +56,7 @@
                         </div>
                     </div>
 
-                    <div class="mt-8 lg:w-1/2 lg:mx-6">
+                    <div class="mt-8 lg:w-1/2 lg:mx-6" data-aos="fade-left" data-aos-duration="1300">
                         <div
                             class="w-full px-8 py-10 mx-auto overflow-hidden bg-white shadow-2xl rounded-xl dark:bg-gray-900 lg:max-w-xl">
                             <h1 class="text-xl font-medium text-gray-700 dark:text-gray-200">Contact form</h1>
@@ -84,26 +70,26 @@
                                 <div class="flex-1">
                                     <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Nama</label>
                                     <input type="text" name="nama"
-                                        class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 focus:border-pink-400 focus:ring-pink-300 focus:ring-opacity-40 focus:outline-none focus:ring"
+                                        class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 focus:border-teal-500 focus:ring-teal-300 focus:ring-opacity-40 focus:outline-none focus:ring"
                                         required />
                                 </div>
 
                                 <div class="flex-1 mt-6">
                                     <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Usia</label>
                                     <input type="number" name="usia"
-                                        class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-pink-400 focus:ring-pink-300 focus:ring-opacity-40 focus:outline-none focus:ring"
+                                        class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-teal-500 focus:ring-teal;-300 focus:ring-opacity-40 focus:outline-none focus:ring"
                                         required />
                                 </div>
 
                                 <div class="w-full mt-6">
                                     <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Pesan</label>
                                     <textarea name="pesan"
-                                        class="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 focus:border-pink-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
+                                        class="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 focus:border-teal-500 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
                                         required></textarea>
                                 </div>
 
                                 <button
-                                    class="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-pink-500 rounded-md hover:bg-pink-400 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50">
+                                    class="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-teal-600 rounded-md hover:bg-teal-500 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50">
                                     kirim
                                 </button>
                             </form>

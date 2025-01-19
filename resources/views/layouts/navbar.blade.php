@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-pink-500 sticky top-0 z-50">
+<nav x-data="{ open: false }" class="bg-teal-600 sticky top-0 z-50">
     <!-- Primary Navigation Menu -->
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">

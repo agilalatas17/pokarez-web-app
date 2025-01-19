@@ -1,4 +1,4 @@
-<footer class="bg-white border-t border-pink-100">
+<footer class="bg-white border-t border-teal-100">
     <div class="container p-6 mx-auto">
         <div class="lg:flex">
             <div class="w-full -mx-6 lg:w-2/5">
@@ -67,8 +67,8 @@
 
                     <div>
                         <h3 class="text-sm font-semibold text-gray-700 uppercase">Sosial media</h3>
-                        <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Instagram</a>
-                        <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Facebook</a>
+                        <a href="https://www.instagram.com/ndrybee?igsh=bTVvamRscTBvdTNj&utm_source=qr" target="_blank"
+                            class="block mt-2 text-sm text-gray-600 hover:underline">Instagram</a>
                         <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">LinkedIn</a>
                         <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Twitter</a>
                     </div>
@@ -85,7 +85,7 @@
         <hr class="h-px my-6 bg-gray-200 border-none">
 
         <div>
-            <p class="text-center text-gray-500">Made with ❤️ - by <span class="text-pink-500">Pokarez Teams</span></p>
+            <p class="text-center text-gray-500">Made with ❤️ - by <span class="text-teal-600">Pokarez Teams</span></p>
         </div>
     </div>
 </footer>
