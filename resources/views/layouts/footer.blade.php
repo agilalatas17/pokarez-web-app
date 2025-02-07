@@ -53,10 +53,9 @@
                         <h3 class="text-sm font-semibold text-gray-700 uppercase">
                             Tautan Cepat
                         </h3>
-                        <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Beranda</a>
-                        {{-- <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Artikel</a> --}}
-                        <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Video</a>
-                        <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Konsultasi</a>
+                        <a href="/" class="block mt-2 text-sm text-gray-600 hover:underline">Beranda</a>
+                        <a href="/blogs/video" class="block mt-2 text-sm text-gray-600 hover:underline">Video</a>
+                        <a href="/konsultasi" class="block mt-2 text-sm text-gray-600 hover:underline">Konsultasi</a>
                     </div>
 
                     <div>
@@ -69,8 +68,10 @@
                         <h3 class="text-sm font-semibold text-gray-700 uppercase">Sosial media</h3>
                         <a href="https://www.instagram.com/ndrybee?igsh=bTVvamRscTBvdTNj&utm_source=qr" target="_blank"
                             class="block mt-2 text-sm text-gray-600 hover:underline">Instagram</a>
-                        <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">LinkedIn</a>
-                        <a href="#" class="block mt-2 text-sm text-gray-600 hover:underline">Twitter</a>
+                        <a href="https://www.linkedin.com/in/indri-ardelia-79476934b/"
+                            class="block mt-2 text-sm text-gray-600 hover:underline">LinkedIn</a>
+                        <a href="https://x.com/ardeliaind8501?s=21"
+                            class="block mt-2 text-sm text-gray-600 hover:underline">Twitter</a>
                     </div>
 
                     <div>
