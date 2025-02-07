@@ -15,7 +15,7 @@
                             <div class="flex mt-4 -mx-1.5 ">
                                 {{-- Twitter --}}
                                 <a class="mx-1.5 text-white transition-colors duration-300 transform hover:text-blue-500"
-                                    href="https://x.com/ardeliaind8501?s=21" data-aos="fade-right"
+                                    href="https://x.com/ardeliaind8501?s=21" target="_blank" data-aos="fade-right"
                                     data-aos-easing="linear" data-aos-duration="1300">
                                     <svg class="w-10 h-10 fill-current" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -26,8 +26,8 @@
 
                                 {{-- Linkedin --}}
                                 <a class="mx-1.5 text-white transition-colors duration-300 transform hover:text-blue-500"
-                                    href="https://www.linkedin.com/in/indri-ardelia-79476934b/" data-aos="fade-right"
-                                    data-aos-easing="linear" data-aos-duration="1000">
+                                    href="https://www.linkedin.com/in/indri-ardelia-79476934b/" target="_blank"
+                                    data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1000">
                                     <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
