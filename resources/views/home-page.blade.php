@@ -8,7 +8,7 @@
                             <span class="text-teal-600 font-lobster">Pokarez.</span>
                         </h1>
 
-                        <p>Mengatur nutrisi mu diawal masa remaja melalui diet gizi seimbang. </p>
+                        <p>Mengatur asupan makananmu melalui Diet Gizi Seimbang.</p>
 
                         <div class="mt-6">
                             <a href="{{ route('blogs.videos-page') }}"
@@ -70,7 +70,7 @@
                         <span class="inline-block w-1 h-1 bg-teal-600 rounded-full"></span>
                     </div>
 
-                    <p>Pokarez (Pola Makan Sehat Remaja Putri) Merupakan sebuah layanan kesehatan yang didesain untuk
+                    <p>Pokarez (Pola Makan Sehat Remaja Gen Z) Merupakan sebuah layanan kesehatan yang didesain untuk
                         membantu remaja dalam mendapatkan informasi yang relevan dan bermanfaat mengenai kesehatan,
                         khususnya bagi remaja putri yang mengalami masa pertumbuhan dengan menjaga pola makan yang lebih
                         sehat dengan melakukan Diet Gizi Seimbang</p>
@@ -120,10 +120,29 @@
                     name: 'Nada',
                     title: '37 Tahun',
                     body: 'Pokarez benar-benar mempermudah saya dalam memahami pola makan sehat untuk remaja. Situs ini sangat user-friendly dan informasi yang disajikan sangat bermanfaat. Fasilitas konsultasinya juga membuat saya lebih yakin dalam memilih makanan yang tepat. Pokarez kerenn!'
-                }
+                },
+                {
+                    id: 4,
+                    name: 'Citya',
+                    title: '24 Tahun',
+                    body: 'Waaa jujur aku baru nemu website edukasi yang informatifnya dapet tapi modern banget dan cocok buat remaja-remaja. tone warna buat bagian-bagian di websitenya itu bikin kita lebih fokus sama narasi di dalamnya. pemilihan judul, cover, bahkan deskripsi media nya juga informatif tapi tetep ringan dan mudah untuk dimengerti. apalagi ada fitur konsultasi yang terhubung ke beberapa platform jadi lebih enak untuk konsultasi soal preferensi gaya hidup sehat yang perlu kita lakuin. semoga website ini makin bisa berkembang yaa!'
+                },
+                {
+                    id: 5,
+                    name: 'Yupita',
+                    title: '18 Tahun',
+                    body: 'Saya sering bingung menentukan pola makan yang tepat untuk diet saya. Video-video di website Pokarez ini membantu saya memahami kebutuhan kalori dan cara mengatur pola makan yang sehat tanpa harus kelaparan melalui vidio edukasi.'
+                },
+                {
+                    id: 6,
+                    name: 'Leksana',
+                    title: '29 Tahun',
+                    body: 'Website POKAREZ ini sangat mudah untuk digunakan, disamping kemudahan dalam penggunaanya website ini memuat informasi yang sangat bermanfaat terutama mengenai pola makan sehat.'
+                },
+        
             ],
             loop() {
-                setInterval(() => { this.activeSlide = this.activeSlide === 3 ? 1 : this.activeSlide + 1 }, 5000)
+                setInterval(() => { this.activeSlide = this.activeSlide === 6 ? 1 : this.activeSlide + 1 }, 5000)
             }
         }" x-init="loop">
             <h1 class="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
@@ -154,10 +173,6 @@
                         <p class="flex items-center text-center text-gray-500 lg:mx-8 " x-text="slide.body"></p>
 
                         <div class="flex flex-col items-center justify-center mt-8">
-                            {{-- <img class="object-cover rounded-full w-14 h-14"
-                                    src="https://images.unsplash.com/photo-1499470932971-a90681ce8530?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                                    alt=""> --}}
-
                             <div class="mt-4 text-center">
                                 <h1 class="font-semibold text-gray-800 dark:text-white" x-text="slide.name"></h1>
                                 <span class="text-sm text-gray-500 dark:text-gray-400" x-text="slide.title"></span>
