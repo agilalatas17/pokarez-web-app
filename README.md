@@ -7,10 +7,11 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Requirements
+## Tech Stack
 
 -   Laravel v.10
 -   PHP v.8.2
+-   Tailwind v3
 
 ## About Laravel
 
